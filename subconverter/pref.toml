@@ -147,7 +147,7 @@ clash_proxies_style = "flow"
 singbox_add_clash_modes = true
 
 [[node_pref.rename_node]]
-match = '^(.*)$'
+match = '^(.*?)(\d+)(.*)$'
 replace = "---king${num}"
 [managed_config]
 # Append a '#!MANAGED-CONFIG' info to Surge configurations

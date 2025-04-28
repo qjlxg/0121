@@ -147,7 +147,7 @@ clash_proxies_style = "flow"
 singbox_add_clash_modes = true
 
 [[node_pref.rename_node]]
-match = '\(?((x|X)?(\d+)(\.?\d+)?)|(x|X))\)'
+match = '(V\d+-[\u4e00-\u9fff]+)(\d+)(\s+[A-Za-z]\d+)'
 rename_replacement = 'king${num}'
 [managed_config]
 # Append a '#!MANAGED-CONFIG' info to Surge configurations
@@ -216,7 +216,7 @@ update_ruleset_on_request = false
 
 # [[rulesets]]
 # group = "Proxy"
-# ruleset = "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Unbreak.list"
+# ruleset = "https://raw.bgithub.xyz/DivineEngine/Profiles/master/Surge/Ruleset/Unbreak.list"
 # type = "surge-ruleset"
 # interval = 86400
 

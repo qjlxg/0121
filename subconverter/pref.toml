@@ -147,7 +147,9 @@ clash_proxies_style = "flow"
 singbox_add_clash_modes = true
 
 [[node_pref.rename_node]]
-match = "\\1"
+rename_nodes = true
+rename_emoji = true
+match = '^(.*)$'
 replace = 'bing${num}'
 
 [managed_config]

@@ -1,8 +1,8 @@
 proxies:
-  - {name: 🇯🇵 V1-日本05 K44, server: 125.94.40.162, port: 21014, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k44.tudou211.com, udp: true}
-  - {name: 🇯🇵 V1-日本04 K43, server: 125.94.40.162, port: 21015, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k43.tudou211.com, udp: true}
-  - {name: 🇩🇪 V1-德国04, server: 125.94.40.162, port: 21102, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k28.tudou211.com, udp: true}
-  - {name: 🇭🇰 V1-香港01 K1, server: 125.94.40.162, port: 21135, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k1.tudou211.com, udp: true}
-  - {name: 🇭🇰 V1-香港02 K2, server: 125.94.40.162, port: 21011, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k2.tudou211.com, udp: true}
-  - {name: 🇯🇵 V1-日本03 K42, server: 125.94.40.162, port: 21183, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k42.tudou211.com, udp: true}
-  - {name: 🇩🇪 V1-德国03, server: 125.94.40.162, port: 21185, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k27.tudou211.com, udp: true}
+  - {name: 🇩🇪 V1-德国04KINGking, server: 125.94.40.162, port: 21102, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k28.tudou211.com, udp: true}
+  - {name: 🇯🇵 V1-日本05 K44KINGking, server: 125.94.40.162, port: 21014, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k44.tudou211.com, udp: true}
+  - {name: 🇭🇰 V1-香港02 K2KINGking, server: 125.94.40.162, port: 21011, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k2.tudou211.com, udp: true}
+  - {name: 🇯🇵 V1-日本04 K43KINGking, server: 125.94.40.162, port: 21015, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k43.tudou211.com, udp: true}
+  - {name: 🇭🇰 V1-香港01 K1KINGking, server: 125.94.40.162, port: 21135, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k1.tudou211.com, udp: true}
+  - {name: 🇩🇪 V1-德国03KINGking, server: 125.94.40.162, port: 21185, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k27.tudou211.com, udp: true}
+  - {name: 🇯🇵 V1-日本03 K42KINGking, server: 125.94.40.162, port: 21183, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k42.tudou211.com, udp: true}

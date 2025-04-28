@@ -149,6 +149,7 @@ singbox_add_clash_modes = true
 [[node_pref.rename_node]]
 match = '.*' 
 replace = "king${num}"
+rename_emoji = true
 deduplicate = true  # 自动去重
 [managed_config]
 # Append a '#!MANAGED-CONFIG' info to Surge configurations

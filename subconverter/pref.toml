@@ -147,11 +147,8 @@ clash_proxies_style = "flow"
 singbox_add_clash_modes = true
 
 [[node_pref.rename_node]]
-match = '^$' 
+match = '^(.*)$'
 replace = "---king${num}"
-rename_emoji = true
-rename_allow_special_chars = ['🇺🇸', '🇯🇵', '-']
-deduplicate = true  # 自动去重
 [managed_config]
 # Append a '#!MANAGED-CONFIG' info to Surge configurations
 write_managed_config = true

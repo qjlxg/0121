@@ -148,7 +148,7 @@ singbox_add_clash_modes = true
 
 [[node_pref.rename_node]]
 match = '\.*$' 
-replace = "king${num}"
+replace = "---king${num}"
 rename_emoji = true
 rename_allow_special_chars = ['🇺🇸', '🇯🇵', '-']
 deduplicate = true  # 自动去重

@@ -1,80 +1,80 @@
 proxies:
-  - {name: ---king, server: 120.232.217.96, port: 21056, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k14.tudou211.com, udp: true}
-  - {name: ---king 2, server: 125.94.40.162, port: 21012, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k46.tudou211.com, udp: true}
-  - {name: ---king 3, server: 125.94.40.162, port: 21135, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k1.tudou211.com, udp: true}
-  - {name: ---king 4, server: 125.94.40.162, port: 47479, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k74.tudou211.com, udp: true}
-  - {name: ---king 5, server: 125.94.40.162, port: 21102, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k28.tudou211.com, udp: true}
-  - {name: ---king 6, server: bg.guangsu888.cc, port: 21865, type: trojan, password: 867617f4-afbb-4393-b2c3-76ab796ae55a, skip-cert-verify: true, udp: true}
-  - {name: ---king 7, server: aflzzul.meiquankongjian.com, port: 51515, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
-  - {name: ---king 8, server: 125.94.40.162, port: 26793, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k77.tudou211.com, udp: true}
-  - {name: ---king 9, server: wb.kaiqsz.com, port: 49921, type: trojan, password: fcac3d3c-6947-4c9e-a6a6-f29541aee1e6, sni: mmbiz1.redapricotcloud.com, skip-cert-verify: true, udp: true}
-  - {name: ---king 10, server: 125.94.40.162, port: 21168, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k56.tudou211.com, udp: true}
-  - {name: ---king 11, server: tk.hzlt.tkddns.xyz, port: 22642, type: vmess, uuid: 98e96c9f-4bb3-39d4-9a2c-fac04257f7c7, alterId: 2, cipher: auto, tls: true, servername: zxjp-b.tkong.cc, network: ws, ws-opts: {path: /, headers: {Host: zxjp-b.tkong.cc}}, udp: true}
-  - {name: ---king 12, server: 23.wogg1.top, port: 11223, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 13, server: xd-js.timiwc.com, port: 21148, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k63.tudou211.com, udp: true}
-  - {name: ---king 14, server: 125.94.40.162, port: 21346, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k45.tudou211.com, udp: true}
-  - {name: ---king 15, server: tk.hzlt.tkddns.xyz, port: 22641, type: vmess, uuid: 98e96c9f-4bb3-39d4-9a2c-fac04257f7c7, alterId: 2, cipher: auto, tls: true, servername: zxjp-a.tkong.cc, network: ws, ws-opts: {path: /, headers: {Host: zxjp-a.tkong.cc}}, udp: true}
-  - {name: ---king 16, server: xd-sh.timiwc.com, port: 52047, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k11.tudou211.com, udp: true}
-  - {name: ---king 17, server: aflzzul.meiquankongjian.com, port: 52513, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
-  - {name: ---king 18, server: cn2.cdn.xfltd-cdn.top, port: 12023, type: trojan, password: 71603f7a-203c-4fce-a114-3402629af231, sni: cdn.alibaba.com, skip-cert-verify: true, udp: true}
-  - {name: ---king 19, server: xd-sh.timiwc.com, port: 32702, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k36.tudou211.com, udp: true}
-  - {name: ---king 20, server: 125.94.40.162, port: 21125, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k12.tudou211.com, udp: true}
-  - {name: ---king 21, server: xd-js.timiwc.com, port: 21603, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k61.tudou211.com, udp: true}
-  - {name: ---king 22, server: xd-js.timiwc.com, port: 59599, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k62.tudou211.com, udp: true}
-  - {name: ---king 23, server: 125.94.40.162, port: 21011, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k2.tudou211.com, udp: true}
-  - {name: ---king 24, server: cesu-mnkxmvkcbaa4.v2.prod.hosts.geekspeed.lat, port: 11012, type: ss, cipher: aes-128-gcm, password: 89c8f09b-dd92-48c8-bd9c-cae663f2fee8, udp: true}
-  - {name: ---king 25, server: aflzzul.meiquankongjian.com, port: 52512, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
-  - {name: ---king 26, server: 125.94.40.162, port: 16233, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k73.tudou211.com, udp: true}
-  - {name: ---king 27, server: new3.huvicloud.com, port: 443, type: vmess, uuid: a10476b9-1c07-4de3-9d84-c51d24be599f, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /a10476b9-1c07-4de3-9d84-c51d24be599f, headers: {Host: new3.huvicloud.com}}, udp: true}
-  - {name: ---king 28, server: 125.94.40.162, port: 21156, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k41.tudou211.com, udp: true}
-  - {name: ---king 29, server: xd-sh.timiwc.com, port: 55296, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k35.tudou211.com, udp: true}
-  - {name: ---king 30, server: 14.wogg1.top, port: 11214, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 31, server: 125.94.40.162, port: 21181, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k31.tudou211.com, udp: true}
-  - {name: ---king 32, server: xd-js.timiwc.com, port: 21328, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k67.tudou211.com, udp: true}
-  - {name: ---king 33, server: 125.94.40.162, port: 21004, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k7.tudou211.com, udp: true}
-  - {name: ---king 34, server: zz1.jckumao.cc, port: 36049, type: trojan, password: 2905aed6-f547-468f-b540-7a5aa2cc1d98, skip-cert-verify: true, udp: true}
-  - {name: ---king 35, server: 125.94.40.162, port: 21031, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k54.tudou211.com, udp: true}
-  - {name: ---king 36, server: 125.94.40.162, port: 21183, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k42.tudou211.com, udp: true}
-  - {name: ---king 37, server: 9.wogg1.top, port: 11209, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 38, server: 125.94.40.162, port: 21179, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k30.tudou211.com, udp: true}
-  - {name: ---king 39, server: bg.guangsu888.cc, port: 21869, type: trojan, password: bb10c254-7c36-4b5a-94f0-cf0d2f5cd90c, skip-cert-verify: true, udp: true}
-  - {name: ---king 40, server: 125.94.40.162, port: 20820, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k71.tudou211.com, udp: true}
-  - {name: ---king 41, server: 15.wogg1.top, port: 11215, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 42, server: zz1.jckumao.cc, port: 36046, type: trojan, password: 100a141c-5a7f-46c1-b113-b525c6a4bb42, skip-cert-verify: true, udp: true}
-  - {name: ---king 43, server: 20.wogg1.top, port: 11220, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 44, server: 125.94.40.162, port: 21017, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k16.tudou211.com, udp: true}
-  - {name: ---king 45, server: 125.94.40.162, port: 21170, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k39.tudou211.com, udp: true}
-  - {name: ---king 46, server: 219.135.231.205, port: 21135, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k1.tudou211.com, udp: true}
-  - {name: ---king 47, server: xd-js.timiwc.com, port: 21332, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k65.tudou211.com, udp: true}
-  - {name: ---king 48, server: xd-js.timiwc.com, port: 21275, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k64.tudou211.com, udp: true}
-  - {name: ---king 49, server: 125.94.40.162, port: 21079, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k32.tudou211.com, udp: true}
-  - {name: ---king 50, server: tk.hzlt.tkddns.xyz, port: 22643, type: vmess, uuid: 98e96c9f-4bb3-39d4-9a2c-fac04257f7c7, alterId: 2, cipher: auto, tls: true, servername: zxjp-c.tkong.cc, network: ws, ws-opts: {path: /, headers: {Host: zxjp-c.tkong.cc}}, udp: true}
-  - {name: ---king 51, server: xd-sh.timiwc.com, port: 57793, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k18.tudou211.com, udp: true}
-  - {name: ---king 52, server: 125.94.40.162, port: 21154, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k29.tudou211.com, udp: true}
-  - {name: ---king 53, server: 125.94.40.162, port: 21061, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k4.tudou211.com, udp: true}
-  - {name: ---king 54, server: 120.232.217.96, port: 21125, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k12.tudou211.com, udp: true}
-  - {name: ---king 55, server: bg.guangsu888.cc, port: 21867, type: trojan, password: b013a3e9-9bce-4aa7-bc0b-e83f64f58351, skip-cert-verify: true, udp: true}
-  - {name: ---king 56, server: 125.94.40.162, port: 21192, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k48.tudou211.com, udp: true}
-  - {name: ---king 57, server: 125.94.40.162, port: 21194, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k38.tudou211.com, udp: true}
-  - {name: ---king 58, server: 125.94.40.162, port: 36678, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k75.tudou211.com, udp: true}
-  - {name: ---king 59, server: 13.wogg1.top, port: 11213, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 60, server: 125.94.40.162, port: 21003, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k15.tudou211.com, udp: true}
-  - {name: ---king 61, server: cn2.cdn.xfltd-cdn.top, port: 12053, type: trojan, password: 71603f7a-203c-4fce-a114-3402629af231, sni: cdn.alibaba.com, skip-cert-verify: true, udp: true}
-  - {name: ---king 62, server: xd-sh.timiwc.com, port: 55040, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k33.tudou211.com, udp: true}
-  - {name: ---king 63, server: 125.94.40.162, port: 21386, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k10.tudou211.com, udp: true}
-  - {name: ---king 64, server: bg.guangsu888.cc, port: 21864, type: trojan, password: 539b9350-55e1-4a6a-8103-8b898ceba308, skip-cert-verify: true, udp: true}
-  - {name: ---king 65, server: level1.governmenttips.com, port: 16959, type: ssr, cipher: aes-256-cfb, password: di15PV5888, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 326327:34567ujnm, obfs-param: e9e97326327.www.gov.hk, udp: true}
-  - {name: ---king 66, server: 125.94.40.162, port: 21015, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k43.tudou211.com, udp: true}
-  - {name: ---king 67, server: u7.huvicloud.com, port: 443, type: vmess, uuid: 7216ba26-d2bc-48f7-8b44-3b91c30cb6ab, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /7216ba26-d2bc-48f7-8b44-3b91c30cb6ab, headers: {Host: u7.huvicloud.com}}, udp: true}
-  - {name: ---king 68, server: 17.wogg1.top, port: 11217, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
-  - {name: ---king 69, server: bg.guangsu888.cc, port: 21868, type: trojan, password: b572f10c-e2de-4149-825e-979e48349b48, skip-cert-verify: true, udp: true}
-  - {name: ---king 70, server: 125.94.40.162, port: 21014, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k44.tudou211.com, udp: true}
-  - {name: ---king 71, server: 125.94.40.162, port: 21042, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k3.tudou211.com, udp: true}
-  - {name: ---king 72, server: u8.huvicloud.com, port: 443, type: vmess, uuid: 6796611b-260e-4d63-9016-20c27b12e420, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /6796611b-260e-4d63-9016-20c27b12e420, headers: {Host: u8.huvicloud.com}}, udp: true}
-  - {name: ---king 73, server: xd-sh.timiwc.com, port: 25441, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k34.tudou211.com, udp: true}
-  - {name: ---king 74, server: cdn.jp2.cocoduck.vip, port: 25642, type: ss, cipher: aes-128-gcm, password: YzRlNjE4YjNiZDk0NDE1NDZlMmU5NGE1MmU1ZjBlZWY=, udp: true}
-  - {name: ---king 75, server: aflzzul.meiquankongjian.com, port: 52511, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
-  - {name: ---king 76, server: 125.94.40.162, port: 21362, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k57.tudou211.com, udp: true}
-  - {name: ---king 77, server: u2.huvicloud.com, port: 443, type: vmess, uuid: f07b9711-a6a4-4128-807d-fdb40dcaa488, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /c6ec090c-db51-4ad7-9cd4-9c827e52ea40, headers: {Host: u2.huvicloud.com}}, udp: true}
-  - {name: ---king 78, server: zz1.jckumao.cc, port: 36045, type: trojan, password: 967826a2-0ce8-4e63-9409-2313d7925504, skip-cert-verify: true, udp: true}
-  - {name: ---king 79, server: 125.94.40.162, port: 21185, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k27.tudou211.com, udp: true}
+  - {name: ---king---king, server: 125.94.40.162, port: 21102, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k28.tudou211.com, udp: true}
+  - {name: ---king---king 2, server: zz1.jckumao.cc, port: 36046, type: trojan, password: 100a141c-5a7f-46c1-b113-b525c6a4bb42, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 3, server: 125.94.40.162, port: 21014, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k44.tudou211.com, udp: true}
+  - {name: ---king---king 4, server: bg.guangsu888.cc, port: 21867, type: trojan, password: b013a3e9-9bce-4aa7-bc0b-e83f64f58351, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 5, server: 125.94.40.162, port: 21017, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k16.tudou211.com, udp: true}
+  - {name: ---king---king 6, server: 125.94.40.162, port: 21156, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k41.tudou211.com, udp: true}
+  - {name: ---king---king 7, server: tk.hzlt.tkddns.xyz, port: 22641, type: vmess, uuid: 98e96c9f-4bb3-39d4-9a2c-fac04257f7c7, alterId: 2, cipher: auto, tls: true, servername: zxjp-a.tkong.cc, network: ws, ws-opts: {path: /, headers: {Host: zxjp-a.tkong.cc}}, udp: true}
+  - {name: ---king---king 8, server: 125.94.40.162, port: 21042, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k3.tudou211.com, udp: true}
+  - {name: ---king---king 9, server: 20.wogg1.top, port: 11220, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 10, server: wb.kaiqsz.com, port: 49921, type: trojan, password: fcac3d3c-6947-4c9e-a6a6-f29541aee1e6, sni: mmbiz1.redapricotcloud.com, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 11, server: 125.94.40.162, port: 21194, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k38.tudou211.com, udp: true}
+  - {name: ---king---king 12, server: 17.wogg1.top, port: 11217, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 13, server: u8.huvicloud.com, port: 443, type: vmess, uuid: 6796611b-260e-4d63-9016-20c27b12e420, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /6796611b-260e-4d63-9016-20c27b12e420, headers: {Host: u8.huvicloud.com}}, udp: true}
+  - {name: ---king---king 14, server: tk.hzlt.tkddns.xyz, port: 22642, type: vmess, uuid: 98e96c9f-4bb3-39d4-9a2c-fac04257f7c7, alterId: 2, cipher: auto, tls: true, servername: zxjp-b.tkong.cc, network: ws, ws-opts: {path: /, headers: {Host: zxjp-b.tkong.cc}}, udp: true}
+  - {name: ---king---king 15, server: xd-sh.timiwc.com, port: 32702, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k36.tudou211.com, udp: true}
+  - {name: ---king---king 16, server: aflzzul.meiquankongjian.com, port: 52512, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
+  - {name: ---king---king 17, server: xd-js.timiwc.com, port: 59599, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k62.tudou211.com, udp: true}
+  - {name: ---king---king 18, server: 219.135.231.205, port: 21135, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k1.tudou211.com, udp: true}
+  - {name: ---king---king 19, server: bg.guangsu888.cc, port: 21868, type: trojan, password: b572f10c-e2de-4149-825e-979e48349b48, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 20, server: 125.94.40.162, port: 21179, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k30.tudou211.com, udp: true}
+  - {name: ---king---king 21, server: 125.94.40.162, port: 21154, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k29.tudou211.com, udp: true}
+  - {name: ---king---king 22, server: 14.wogg1.top, port: 11214, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 23, server: 125.94.40.162, port: 21012, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k46.tudou211.com, udp: true}
+  - {name: ---king---king 24, server: new3.huvicloud.com, port: 443, type: vmess, uuid: a10476b9-1c07-4de3-9d84-c51d24be599f, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /a10476b9-1c07-4de3-9d84-c51d24be599f, headers: {Host: new3.huvicloud.com}}, udp: true}
+  - {name: ---king---king 25, server: zz1.jckumao.cc, port: 36045, type: trojan, password: 967826a2-0ce8-4e63-9409-2313d7925504, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 26, server: 125.94.40.162, port: 21181, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k31.tudou211.com, udp: true}
+  - {name: ---king---king 27, server: 125.94.40.162, port: 21362, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k57.tudou211.com, udp: true}
+  - {name: ---king---king 28, server: cn2.cdn.xfltd-cdn.top, port: 12023, type: trojan, password: 71603f7a-203c-4fce-a114-3402629af231, sni: cdn.alibaba.com, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 29, server: 125.94.40.162, port: 21011, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k2.tudou211.com, udp: true}
+  - {name: ---king---king 30, server: 125.94.40.162, port: 21192, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k48.tudou211.com, udp: true}
+  - {name: ---king---king 31, server: xd-sh.timiwc.com, port: 52047, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k11.tudou211.com, udp: true}
+  - {name: ---king---king 32, server: 9.wogg1.top, port: 11209, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 33, server: 125.94.40.162, port: 21079, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k32.tudou211.com, udp: true}
+  - {name: ---king---king 34, server: 125.94.40.162, port: 21135, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k1.tudou211.com, udp: true}
+  - {name: ---king---king 35, server: xd-js.timiwc.com, port: 21603, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k61.tudou211.com, udp: true}
+  - {name: ---king---king 36, server: 120.232.217.96, port: 21056, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k14.tudou211.com, udp: true}
+  - {name: ---king---king 37, server: 125.94.40.162, port: 21125, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k12.tudou211.com, udp: true}
+  - {name: ---king---king 38, server: 125.94.40.162, port: 21185, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k27.tudou211.com, udp: true}
+  - {name: ---king---king 39, server: 125.94.40.162, port: 47479, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k74.tudou211.com, udp: true}
+  - {name: ---king---king 40, server: 125.94.40.162, port: 21346, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k45.tudou211.com, udp: true}
+  - {name: ---king---king 41, server: bg.guangsu888.cc, port: 21869, type: trojan, password: bb10c254-7c36-4b5a-94f0-cf0d2f5cd90c, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 42, server: 125.94.40.162, port: 21170, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k39.tudou211.com, udp: true}
+  - {name: ---king---king 43, server: bg.guangsu888.cc, port: 21865, type: trojan, password: 867617f4-afbb-4393-b2c3-76ab796ae55a, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 44, server: xd-js.timiwc.com, port: 21328, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k67.tudou211.com, udp: true}
+  - {name: ---king---king 45, server: u7.huvicloud.com, port: 443, type: vmess, uuid: 7216ba26-d2bc-48f7-8b44-3b91c30cb6ab, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /7216ba26-d2bc-48f7-8b44-3b91c30cb6ab, headers: {Host: u7.huvicloud.com}}, udp: true}
+  - {name: ---king---king 46, server: 125.94.40.162, port: 21183, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k42.tudou211.com, udp: true}
+  - {name: ---king---king 47, server: 125.94.40.162, port: 21004, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k7.tudou211.com, udp: true}
+  - {name: ---king---king 48, server: aflzzul.meiquankongjian.com, port: 52513, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
+  - {name: ---king---king 49, server: 125.94.40.162, port: 21386, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k10.tudou211.com, udp: true}
+  - {name: ---king---king 50, server: zz1.jckumao.cc, port: 36049, type: trojan, password: 2905aed6-f547-468f-b540-7a5aa2cc1d98, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 51, server: 13.wogg1.top, port: 11213, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 52, server: xd-sh.timiwc.com, port: 25441, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k34.tudou211.com, udp: true}
+  - {name: ---king---king 53, server: level1.governmenttips.com, port: 16959, type: ssr, cipher: aes-256-cfb, password: di15PV5888, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 326327:34567ujnm, obfs-param: e9e97326327.www.gov.hk, udp: true}
+  - {name: ---king---king 54, server: 15.wogg1.top, port: 11215, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 55, server: cn2.cdn.xfltd-cdn.top, port: 12053, type: trojan, password: 71603f7a-203c-4fce-a114-3402629af231, sni: cdn.alibaba.com, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 56, server: 125.94.40.162, port: 36678, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k75.tudou211.com, udp: true}
+  - {name: ---king---king 57, server: 125.94.40.162, port: 21168, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k56.tudou211.com, udp: true}
+  - {name: ---king---king 58, server: bg.guangsu888.cc, port: 21864, type: trojan, password: 539b9350-55e1-4a6a-8103-8b898ceba308, skip-cert-verify: true, udp: true}
+  - {name: ---king---king 59, server: u2.huvicloud.com, port: 443, type: vmess, uuid: f07b9711-a6a4-4128-807d-fdb40dcaa488, alterId: 0, cipher: auto, tls: true, network: ws, ws-opts: {path: /c6ec090c-db51-4ad7-9cd4-9c827e52ea40, headers: {Host: u2.huvicloud.com}}, udp: true}
+  - {name: ---king---king 60, server: 125.94.40.162, port: 21003, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k15.tudou211.com, udp: true}
+  - {name: ---king---king 61, server: cdn.jp2.cocoduck.vip, port: 25642, type: ss, cipher: aes-128-gcm, password: YzRlNjE4YjNiZDk0NDE1NDZlMmU5NGE1MmU1ZjBlZWY=, udp: true}
+  - {name: ---king---king 62, server: 125.94.40.162, port: 21015, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k43.tudou211.com, udp: true}
+  - {name: ---king---king 63, server: aflzzul.meiquankongjian.com, port: 51515, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
+  - {name: ---king---king 64, server: tk.hzlt.tkddns.xyz, port: 22643, type: vmess, uuid: 98e96c9f-4bb3-39d4-9a2c-fac04257f7c7, alterId: 2, cipher: auto, tls: true, servername: zxjp-c.tkong.cc, network: ws, ws-opts: {path: /, headers: {Host: zxjp-c.tkong.cc}}, udp: true}
+  - {name: ---king---king 65, server: xd-js.timiwc.com, port: 21275, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k64.tudou211.com, udp: true}
+  - {name: ---king---king 66, server: 23.wogg1.top, port: 11223, type: vmess, uuid: 48af369b-07f9-30f3-9210-354bd85eea27, alterId: 2, cipher: auto, tls: false, udp: true}
+  - {name: ---king---king 67, server: 125.94.40.162, port: 26793, type: trojan, password: 6f1d5be0-4ed9-4706-99e2-36a2b658ae1b, sni: k77.tudou211.com, udp: true}
+  - {name: ---king---king 68, server: xd-sh.timiwc.com, port: 55296, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k35.tudou211.com, udp: true}
+  - {name: ---king---king 69, server: xd-js.timiwc.com, port: 21332, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k65.tudou211.com, udp: true}
+  - {name: ---king---king 70, server: aflzzul.meiquankongjian.com, port: 52511, type: vmess, uuid: 342bacfd-2b8f-3f49-a16e-439db5b0b9d5, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /564dfa20/, headers: {Host: aflzzul.meiquankongjian.com}}, udp: true}
+  - {name: ---king---king 71, server: cesu-mnkxmvkcbaa4.v2.prod.hosts.geekspeed.lat, port: 11012, type: ss, cipher: aes-128-gcm, password: 89c8f09b-dd92-48c8-bd9c-cae663f2fee8, udp: true}
+  - {name: ---king---king 72, server: 125.94.40.162, port: 21061, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k4.tudou211.com, udp: true}
+  - {name: ---king---king 73, server: xd-sh.timiwc.com, port: 57793, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k18.tudou211.com, udp: true}
+  - {name: ---king---king 74, server: xd-js.timiwc.com, port: 21148, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k63.tudou211.com, udp: true}
+  - {name: ---king---king 75, server: 125.94.40.162, port: 20820, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k71.tudou211.com, udp: true}
+  - {name: ---king---king 76, server: 125.94.40.162, port: 16233, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k73.tudou211.com, udp: true}
+  - {name: ---king---king 77, server: 120.232.217.96, port: 21125, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k12.tudou211.com, udp: true}
+  - {name: ---king---king 78, server: xd-sh.timiwc.com, port: 55040, type: trojan, password: 4e5c7598-0bc4-4578-9c45-efef68373673, sni: k33.tudou211.com, udp: true}
+  - {name: ---king---king 79, server: 125.94.40.162, port: 21031, type: trojan, password: f57f01e6-9bb1-4277-a5cb-75ad0ce1fa11, sni: k54.tudou211.com, udp: true}

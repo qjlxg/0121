@@ -156,7 +156,7 @@ rename_append_proxy_type = false  # 不追加协议类型
 
 [[node_pref.rename_node]]
 match = '\(?((x|X)?(\d+)(\.?\d+)?)((\s?倍率?)|(x|X))\)?'
-replace = "下载慢手动换"
+replace = "king${num}"
 
 [managed_config]
 # Append a '#!MANAGED-CONFIG' info to Surge configurations

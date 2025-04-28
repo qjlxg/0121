@@ -1,1 +1,1 @@
-https://github.com/qjlxg/license/raw/refs/heads/main/base64.txt
+https://raw.githubusercontent.com/qjlxg/license/refs/heads/main/data/clash.yaml

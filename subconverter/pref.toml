@@ -147,7 +147,7 @@ clash_proxies_style = "flow"
 singbox_add_clash_modes = true
 
 [[node_pref.rename_node]]
-match = '.*' 
+match = '^.*$' 
 replace = "king${num}"
 rename_emoji = true
 deduplicate = true  # 自动去重

@@ -146,6 +146,14 @@ clash_proxies_style = "flow"
 # add Clash mode to sing-box rules, and add a GLOBAL group to end of outbounds
 singbox_add_clash_modes = true
 
+[node_pref]
+rename_nodes = true               # 强制启用节点重命名
+rename_pattern = '.*'             # 匹配所有节点名称（正则表达式）
+rename_replacement = 'king${num}'  # 生成 king1, king2 序列
+deduplicate_nodes = true          # 自动去重同名节点
+rename_emoji = false              # 禁用Emoji符号
+rename_append_proxy_type = false  # 不追加协议类型
+
 [[node_pref.rename_node]]
 match = '\(?((x|X)?(\d+)(\.?\d+)?)((\s?倍率?)|(x|X))\)?'
 replace = "下载慢手动换"

@@ -146,7 +146,7 @@ clash_proxies_style = "flow"
 # add Clash mode to sing-box rules, and add a GLOBAL group to end of outbounds
 singbox_add_clash_modes = true
 
-[node_pref]
+
 rename_nodes = true               # 强制启用节点重命名
 rename_pattern = '.*'             # 匹配所有节点名称（正则表达式）
 rename_replacement = 'king${num}'  # 生成 king1, king2 序列

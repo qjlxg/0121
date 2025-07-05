@@ -6,13 +6,33 @@ import json
 import urllib.parse
 import re
 import yaml # 确保安装了 pyyaml
+import html # 用于解码HTML实体
 
-def parse_url(url):
+def parse_url(url_raw):
+    # 首先尝试解码HTML实体，处理 &amp; 等情况
+    url = html.unescape(url_raw)
+
     try:
+        # VMess 协议解析
         if url.startswith("vmess://"):
+            # 尝试多种编码进行解码，避免 'utf-8' codec can't decode byte 错误
             encoded_str = url[8:]
-            decoded_str = base64.b64decode(encoded_str).decode("utf-8")
-            config = json.loads(decoded_str)
+            decoded_str = ""
+            try:
+                decoded_str = base64.b64decode(encoded_str).decode("utf-8")
+            except UnicodeDecodeError:
+                try: # 尝试其他常见编码，例如 latin-1
+                    decoded_str = base64.b64decode(encoded_str).decode("latin-1")
+                except Exception:
+                    # 如果仍无法解码，则此节点无效
+                    return None
+            
+            # 尝试解析 JSON，如果失败则跳过
+            try:
+                config = json.loads(decoded_str)
+            except json.JSONDecodeError:
+                return None # 无效 JSON 格式
+
             name_base = config.get("ps", config.get("add", "vmess_node"))
             name = f"vmess_{re.sub(r"[^a-zA-Z0-9_.-]", "_", name_base)}_{config["port"]}"
             return {
@@ -35,12 +55,27 @@ def parse_url(url):
                 } if config.get("net") == "grpc" else None,
                 "udp": True
             }
+        # ShadowSocks (SS) 协议解析
         elif url.startswith("ss://"):
             parts = url[5:].split('@')
-            auth_part = base64.b64decode(parts[0]).decode("utf-8")
-            method, password = auth_part.split(':', 1)
+            if len(parts) < 2: return None # 格式错误
+
+            auth_part_encoded = parts[0]
+            auth_part_decoded = ""
+            try:
+                auth_part_decoded = base64.b64decode(auth_part_encoded).decode("utf-8")
+            except UnicodeDecodeError:
+                try:
+                    auth_part_decoded = base64.b64decode(auth_part_encoded).decode("latin-1")
+                except Exception:
+                    return None
+            
+            if ':' not in auth_part_decoded: return None # 格式错误
+            method, password = auth_part_decoded.split(':', 1)
+            
             server_port_name = parts[1].split('#')
-            server, port = server_port_name[0].split(':')
+            if ':' not in server_port_name[0]: return None # 格式错误
+            server, port = server_port_name[0].split(':', 1)
             name_raw = urllib.parse.unquote(server_port_name[1]) if len(server_port_name) > 1 else f"{server}:{port}"
             name = f"ss_{re.sub(r"[^a-zA-Z0-9_.-]", "_", name_raw)}_{port}"
             return {
@@ -52,24 +87,29 @@ def parse_url(url):
                 "password": password,
                 "udp": True
             }
+        # Trojan 协议解析 (Trojan URL通常不包含Base64编码，但增加了错误捕获)
         elif url.startswith("trojan://"):
-            parts = url[9:].split('@')
-            password = parts[0]
-            server_port_name = parts[1].split('#')
-            server, port = server_port_name[0].split(':')
-            name_raw = urllib.parse.unquote(server_port_name[1]) if len(server_port_name) > 1 else f"{server}:{port}"
+            parsed_url = urllib.parse.urlparse(url)
+            password = parsed_url.username
+            server = parsed_url.hostname
+            port = parsed_url.port if parsed_url.port else 443
+            name_raw = urllib.parse.unquote(parsed_url.fragment) if parsed_url.fragment else f"{server}:{port}"
             name = f"trojan_{re.sub(r"[^a-zA-Z0-9_.-]", "_", name_raw)}_{port}"
+            
+            query_params = urllib.parse.parse_qs(parsed_url.query)
+            
             return {
                 "name": name,
                 "type": "trojan",
                 "server": server,
                 "port": int(port),
                 "password": password,
-                "tls": True,
-                "sni": server,
-                "skip-cert-verify": False,
+                "tls": query_params.get("security", ["tls"])[0] == "tls", # 默认tls
+                "sni": query_params.get("sni", [server])[0],
+                "skip-cert-verify": query_params.get("skip-cert-verify", ["false"])[0].lower() == "true",
                 "udp": True
             }
+        # VLESS 协议解析 (VLESS URL通常不包含Base64编码，但增加了错误捕获)
         elif url.startswith("vless://"):
             parsed_url = urllib.parse.urlparse(url)
             uuid = parsed_url.username
@@ -98,6 +138,7 @@ def parse_url(url):
                 } if query_params.get("type", [""])[0] == "grpc" else None,
                 "udp": True
             }
+        # Hysteria2 协议解析 (Hysteria2 URL通常不包含Base64编码，但增加了错误捕获)
         elif url.startswith("hysteria2://"):
             parsed_url = urllib.parse.urlparse(url)
             server_port = parsed_url.netloc.split(":")
@@ -124,9 +165,20 @@ def parse_url(url):
                 "alpn": query_params.get("alpn", ["h3"])[0].split(","),
                 "udp": True
             }
+        # ShadowSocksR (SSR) 协议解析 - 简化版
         elif url.startswith("ssr://"):
             encoded_str = url[6:]
-            decoded_str = base64.b64decode(encoded_str.replace('-', '+').replace('_', '/')).decode("utf-8")
+            decoded_str = ""
+            try: # SSR Base64 编码通常是 url-safe 的，并且可能不带填充
+                decoded_str = base64.urlsafe_b64decode(encoded_str + '==').decode("utf-8")
+            except UnicodeDecodeError:
+                try: # 尝试 latin-1
+                    decoded_str = base64.urlsafe_b64decode(encoded_str + '==').decode("latin-1")
+                except Exception:
+                    return None
+            except Exception: # 捕获其他 Base64 解码错误
+                return None
+
             parts = decoded_str.split(":")
             if len(parts) >= 6:
                 server = parts[0]
@@ -135,14 +187,23 @@ def parse_url(url):
                 
                 remaining = parts[5].split("/?")
                 password_b64 = remaining[0]
-                password = base64.b64decode(password_b64.replace('-', '+').replace('_', '/')).decode("utf-8")
+                password = ""
+                try:
+                    password = base64.urlsafe_b64decode(password_b64 + '==').decode("utf-8")
+                except UnicodeDecodeError:
+                    try:
+                        password = base64.urlsafe_b64decode(password_b64 + '==').decode("latin-1")
+                    except Exception:
+                        return None
+                except Exception:
+                    return None
 
                 params_part = ""
                 if len(remaining) > 1:
                     params_name_part = remaining[1].split("#")
                     params_part = params_name_part[0]
                     name_b64 = params_name_part[1] if len(params_name_part) > 1 else ""
-                    name_raw = base64.b64decode(name_b64.replace('-', '+').replace('_', '/')).decode("utf-8") if name_b64 else f"{server}:{port}"
+                    name_raw = base64.urlsafe_b64decode(name_b64 + '==').decode("utf-8") if name_b64 else f"{server}:{port}"
                 else:
                     name_raw = f"{server}:{port}"
 
@@ -150,20 +211,19 @@ def parse_url(url):
 
                 return {
                     "name": name,
-                    "type": "ss",
+                    "type": "ss", # Clash 通常将 SSR 映射为 SS
                     "server": server,
-                    "port": int(port),
+                    "port": port,
                     "cipher": method,
                     "password": password,
                     "udp": True
                 }
-            return None
+            return None # 非法 SSR 格式
         else:
-            sys.stderr.write(f"Unknown protocol: {url}\n")
-            return None
+            return None # 未知协议
 
-    except Exception as e:
-        sys.stderr.write(f"Error parsing URL {url}: {e}\n")
+    except Exception:
+        # 不再打印具体的解析错误到 stderr，只返回 None
         return None
 
 used_names = set()
@@ -184,11 +244,15 @@ if __name__ == "__main__":
     input_nodes_file = sys.argv[1]
     output_clash_config_file = sys.argv[2]
 
-    with open(input_nodes_file, "r") as f:
+    total_nodes_processed = 0
+    successfully_parsed_nodes = 0
+    
+    with open(input_nodes_file, "r", encoding="utf-8", errors="ignore") as f: # 增加编码错误处理
         nodes_to_convert = f.readlines()
 
     proxies_list = []
     for url in nodes_to_convert:
+        total_nodes_processed += 1
         url = url.strip()
         if url:
             clash_proxy_config = parse_url(url)
@@ -196,9 +260,11 @@ if __name__ == "__main__":
                 original_name = clash_proxy_config.get("name", "Unnamed")
                 clash_proxy_config["name"] = get_unique_name(original_name)
                 proxies_list.append(clash_proxy_config)
+                successfully_parsed_nodes += 1
+    
+    # 打印汇总信息到 stdout，供 Bash 脚本捕获
+    sys.stdout.write(f"  Processed {total_nodes_processed} raw nodes. Successfully parsed {successfully_parsed_nodes} into Clash format.\n")
 
     # 将代理列表追加到现有 Clash 配置文件中
-    with open(output_clash_config_file, "a") as f:
-        # 使用 yaml.dump 将 Python 列表转换为 YAML 格式并写入
-        # default_flow_style=False 确保每个代理配置都独立成行
+    with open(output_clash_config_file, "a", encoding="utf-8") as f:
         yaml.dump(proxies_list, f, allow_unicode=True, default_flow_style=False, sort_keys=False)

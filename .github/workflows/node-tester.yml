@@ -39,13 +39,7 @@ jobs:
         MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
         echo "Downloading Mihomo from: $MIHOMO_URL"
         wget -qO- "$MIHOMO_URL" | gzip -d > clash
-        chmod +x clash
-      # 如果上面的动态获取链接失败，您可以手动指定一个版本和链接，例如：
-      # run: |
-      #   rm -rf clash # 同样需要清理
-      #   MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/v1.19.11/mihomo-linux-amd64-v1.19.11.gz" # 示例版本，请替换为最新稳定版
-      #   wget -qO- "$MIHOMO_URL" | gzip -d > clash
-      #   chmod +x clash
+        chmod +x clash # 确保下载的clash可执行文件有权限
 
     - name: Install dependencies
       run: |
@@ -53,12 +47,15 @@ jobs:
         sudo apt-get install -y iputils-ping curl
         pip install pyyaml requests
 
+    - name: Make node_tester.sh executable # 新增步骤：赋予脚本执行权限
+      run: chmod +x ./node_tester.sh
+
     - name: Run Node Tester Script
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 用于推送更新到仓库
       run: |
         mkdir -p data # 确保data目录存在
-        ./node_tester.sh
+        ./node_tester.sh # 现在应该能正常运行了
     
     - name: Commit and push results
       run: |

@@ -18,8 +18,8 @@ MAX_NODES_FOR_CLASH_TEST=5000
 BATCH_SIZE=500
 
 # 清理遗留文件并初始化
-mkdir -p data
-rm -rf clash/* data/temp_*.txt data/batch_*.json data/batch_all_*.txt
+mkdir -p data clash
+rm -rf data/temp_*.txt data/batch_*.json data/batch_all_*.txt
 touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON"
 
 echo "步骤 1: 获取主 sources 列表..."
@@ -148,7 +148,7 @@ with open(sys.argv[1], "a") as f:
 ' "$TEMP_CLASH_CONFIG"
 
     echo "  运行 Clash 测试批次 $((i+1))..."
-    ./clash -f "$TEMP_CLASH_CONFIG" -d . > "$CLASH_LOG" 2>&1 &
+    ./clash/clash -f "$TEMP_CLASH_CONFIG" -d . > "$CLASH_LOG" 2>&1 &
     CLASH_PID=$!
     sleep 15
     if ! ps -p $CLASH_PID > /dev/null; then
@@ -159,7 +159,7 @@ with open(sys.argv[1], "a") as f:
         # 提交当前成果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt
         git commit -m "Save batch $((i+1)) results despite Clash failure" || echo "无中间结果需要提交"
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
@@ -179,7 +179,7 @@ with open(sys.argv[1], "a") as f:
         # 提交当前成果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt
         git commit -m "Save batch $((i+1)) results despite Clash API failure" || echo "无中间结果需要提交"
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
@@ -235,7 +235,7 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
     # 提交批次结果
     git config user.name 'github-actions[bot]'
     git config user.email 'github-actions[bot]@users.noreply.github.com'
-    git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+    git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt
     git commit -m "Save batch $((i+1)) results" || echo "无中间结果需要提交"
     git push || {
         echo "错误: git push 失败，查看远程仓库状态："

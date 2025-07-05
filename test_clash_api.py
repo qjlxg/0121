@@ -2,14 +2,13 @@
 
 import requests
 import json
-import time
 import sys
 import yaml
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-CLASH_CONTROLLER_URL = "http://127.0.0.1:9090"
 logging.basicConfig(filename="data/test_clash_api.log", level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+CLASH_CONTROLLER_URL = "http://127.0.0.1:9090"
 
 def get_proxies():
     for attempt in range(3):
@@ -24,11 +23,12 @@ def get_proxies():
     logging.error("所有尝试获取 Clash 代理均失败")
     return {}
 
-def test_proxy(name):
+def test_proxy(name, is_tls_protocol=False):
+    test_url = "https://www.google.com/generate_204" if is_tls_protocol else "http://www.google.com/generate_204"
     for attempt in range(2):
         try:
             response = requests.get(
-                f"{CLASH_CONTROLLER_URL}/proxies/{name}/delay?url=https://www.google.com/generate_204&timeout=15000",
+                f"{CLASH_CONTROLLER_URL}/proxies/{name}/delay?url={test_url}&timeout=15000",
                 timeout=18
             )
             response.raise_for_status()
@@ -42,10 +42,13 @@ def test_proxy(name):
     logging.error(f"测试 {name} 失败")
     return "error"
 
-def parallel_test_proxies(proxies, max_workers=5):
+def parallel_test_proxies(proxies, proxies_config, max_workers=5):
     results = []
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        future_to_proxy = {executor.submit(test_proxy, name): name for name in proxies}
+        future_to_proxy = {
+            executor.submit(test_proxy, name, proxies_config.get(name, {}).get("type") in ["trojan", "vless"]): name
+            for name in proxies
+        }
         for future in as_completed(future_to_proxy):
             name = future_to_proxy[future]
             try:
@@ -63,11 +66,18 @@ if __name__ == "__main__":
     results_file = sys.argv[1]
     proxies = get_proxies()
     testable_proxies = [name for name in proxies if name not in ["auto-test", "GLOBAL"]]
+    if not testable_proxies:
+        sys.stdout.write("  无可测试节点。")
+        sys.exit(0)
+    # 从 clash_config.yaml 获取节点类型
+    with open("data/clash_config_batch.yaml", "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+    proxies_config = {proxy["name"]: proxy for proxy in config.get("proxies", [])}
     tested_count = 0
     passed_count = 0
     failed_count = 0
     with open(results_file, "w", encoding="utf-8") as f_out:
-        for name, delay in parallel_test_proxies(testable_proxies):
+        for name, delay in parallel_test_proxies(testable_proxies, proxies_config):
             result_line = f"{name}: {delay}ms"
             f_out.write(result_line + "\n")
             tested_count += 1
@@ -75,5 +85,5 @@ if __name__ == "__main__":
                 passed_count += 1
             else:
                 failed_count += 1
-    sys.stdout.write(f"  Clash 测试完成。总计测试节点: {tested_count}，通过: {passed_count}，失败: {failed_count}。\n")
+    sys.stdout.write(f"  测试完成: 总计 {tested_count}，通过 {passed_count}，失败 {failed_count}。")
     logging.info(f"测试总结: 总计 {tested_count}，通过 {passed_count}，失败 {failed_count}")

@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # --- 文件路径定义 ---
+SOURCES_LIST_URL="https://raw.githubusercontent.com/qjlxg/ss/refs/heads/master/sources.list"
 ALL_NODES_FILE="data/all.txt"
 PREVIOUS_NODES_FILE="data/previous_nodes.txt"
+TEMP_SOURCES_LIST="data/temp_sources_list.txt"
+TEMP_ALL_RAW_NODES="data/temp_all_raw_nodes.txt"
 TEMP_NEW_RAW_NODES="data/temp_new_raw_nodes.txt"
 TEMP_PARSED_NODES_JSON="data/parsed_nodes.json"
 TEMP_CLASH_CONFIG="data/clash_config_batch.yaml"
@@ -21,15 +24,40 @@ mkdir -p data clash
 rm -rf data/temp_*.txt data/batch_*.json data/batch_all_*.txt data/clash_config_batch_*.yaml
 touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON"
 
-echo "步骤 1: 检查预过滤节点文件..."
-if [ ! -f "$FILTERED_NODES" ] || [ ! -s "$FILTERED_NODES" ]; then
-    echo "错误: 预过滤节点文件 $FILTERED_NODES 不存在或为空。请先运行 prefilter_nodes.sh。"
+echo "步骤 1: 获取主 sources 列表..."
+curl -s --retry 3 --connect-timeout 10 "$SOURCES_LIST_URL" | grep -v '^#' > "$TEMP_SOURCES_LIST"
+
+if [ ! -s "$TEMP_SOURCES_LIST" ]; then
+    echo "错误: 无法获取主 sources 列表或列表为空。退出。"
+    exit 1
+fi
+
+echo "步骤 2: 从子来源获取节点 URL..."
+SUB_URL_COUNT=0
+while IFS= read -r sub_url; do
+    if [ -z "$sub_url" ]; then
+        continue
+    fi
+    curl -s --retry 3 --connect-timeout 10 "$sub_url" | grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' >> "$TEMP_ALL_RAW_NODES"
+    ((SUB_URL_COUNT++))
+done < "$TEMP_SOURCES_LIST"
+echo "  从 $SUB_URL_COUNT 个子来源获取完成。"
+
+if [ ! -s "$TEMP_ALL_RAW_NODES" ]; then
+    echo "错误: 从子来源获取的节点 URL 为空。退出。"
+    exit 1
+fi
+
+echo "步骤 3: 运行预过滤模块..."
+./prefilter_nodes.sh
+if [ ! -s "$FILTERED_NODES" ]; then
+    echo "错误: 预过滤后无有效节点，退出。"
     exit 1
 fi
 FILTERED_NODES_COUNT=$(wc -l < "$FILTERED_NODES")
-echo "  发现 $FILTERED_NODES_COUNT 个预过滤节点。"
+echo "  预过滤后剩余 $FILTERED_NODES_COUNT 个节点。"
 
-echo "步骤 2: 识别新节点..."
+echo "步骤 4: 识别新节点..."
 if [ ! -f "$PREVIOUS_NODES_FILE" ]; then
     NEW_NODES_COUNT=$FILTERED_NODES_COUNT
     cp "$FILTERED_NODES" "$TEMP_NEW_RAW_NODES"
@@ -50,7 +78,7 @@ if [ "$NEW_NODES_COUNT" -eq 0 ]; then
     exit 0
 fi
 
-echo "步骤 3: 解析节点为 Clash 格式..."
+echo "步骤 5: 解析节点为 Clash 格式..."
 PARSE_RESULT=$(./convert_nodes.py "$TEMP_NEW_RAW_NODES" "$TEMP_PARSED_NODES_JSON")
 echo "$PARSE_RESULT"
 
@@ -272,7 +300,7 @@ except Exception as e:
     }
 done
 
-echo "步骤 4: 生成最终 Clash 配置文件..."
+echo "步骤 6: 生成最终 Clash 配置文件..."
 if [ ! -s "$ALL_PASSED_NODES_JSON" ]; then
     echo "没有测试通过的节点，生成空的 $FINAL_CLASH_CONFIG。"
     cat << EOF > "$FINAL_CLASH_CONFIG"

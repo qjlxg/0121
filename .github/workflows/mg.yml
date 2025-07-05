@@ -1,0 +1,97 @@
+name: Node Tester and Updater
+
+on:
+  workflow_dispatch: # 允许手动触发
+  schedule:
+    - cron: '0 */6 * * *' # 每6小时运行一次
+  push:
+    branches:
+      - main # 当 main 分支有新提交时触发
+
+# 并发控制，避免多个工作流同时运行
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  test_nodes:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # 获取完整历史，方便 rebase
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Download Clash.Meta (Mihomo)
+      run: |
+        rm -rf clash
+        MIHOMO_VERSION=$(curl -s "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | grep -oP '"tag_name": "\K[^"]+')
+        echo "使用 Mihomo 版本: $MIHOMO_VERSION"
+        MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
+        wget -qO- "$MIHOMO_URL" | gzip -d > clash
+        chmod +x clash
+        # 验证 Clash 可执行文件
+        if ! ./clash --version > /dev/null; then
+          echo "错误: Clash 可执行文件无效"
+          exit 1
+        fi
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update --quiet
+        sudo apt-get install -y --quiet iputils-ping curl jq
+        pip install --quiet pyyaml requests
+
+    - name: Make scripts executable
+      run: |
+        chmod +x ./node_tester.sh
+        chmod +x ./convert_nodes.py
+        chmod +x ./test_clash_api.py
+
+    - name: Run Node Tester Script
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        mkdir -p data
+        ./node_tester.sh
+
+    - name: Commit and push results
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/all.txt
+        git add data/clash_config.yaml
+        git add data/previous_nodes.txt
+        git add data/clash.log
+        git add data/convert_nodes.log
+        git add data/test_clash_api.log
+        git add data/passed_nodes.json
+        git add data/parsed_nodes.json
+        git commit -m "Update tested nodes" || echo "无变更需要提交"
+        # 拉取远程变更并尝试合并
+        git fetch origin
+        git pull --rebase origin main || {
+          echo "错误: git pull --rebase 失败，查看冲突详情："
+          git status
+          git diff
+          exit 1
+        }
+        git push || {
+          echo "错误: git push 失败，查看远程仓库状态："
+          git status
+          git log --oneline -n 5
+          exit 1
+        }
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

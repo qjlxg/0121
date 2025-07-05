@@ -82,7 +82,7 @@ echo "  成功解析 $PARSED_NODES_COUNT 个节点。"
 # 限制总测试节点数量
 NODES_TO_TEST_COUNT=$PARSED_NODES_COUNT
 if [ "$PARSED_NODES_COUNT" -gt "$MAX_NODES_FOR_CLASH_TEST" ]; then
-    NODES_TO_TEST_COUNT="$MAX_NODES_FOR_CLASH_TEST"
+    NODES_TO_TEST_COUNT=$MAX_NODES_FOR_CLASH_TEST
     echo "  限制测试前 $MAX_NODES_FOR_CLASH_TEST 个节点。"
     jq ".[0:$MAX_NODES_FOR_CLASH_TEST]" "$TEMP_PARSED_NODES_JSON" > "$TEMP_PARSED_NODES_JSON.limited"
     mv "$TEMP_PARSED_NODES_JSON.limited" "$TEMP_PARSED_NODES_JSON"
@@ -154,12 +154,13 @@ with open(sys.argv[1], "a") as f:
     if ! ps -p $CLASH_PID > /dev/null; then
         echo "错误: Clash 启动失败，查看 $CLASH_LOG。继续下一批次。"
         cat "$CLASH_LOG"
+        cp "$TEMP_CLASH_CONFIG" "data/clash_config_batch_$i.yaml" # 保存批次配置文件供调试
         # 清理批次临时文件
         rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
         # 提交当前成果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config_batch_*.yaml
         git commit -m "Save batch $((i+1)) results despite Clash failure" || echo "无中间结果需要提交"
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
@@ -173,13 +174,14 @@ with open(sys.argv[1], "a") as f:
     if ! curl -s --connect-timeout 5 "http://127.0.0.1:9090/proxies" > /dev/null; then
         echo "错误: Clash API (127.0.0.1:9090) 不可用，查看 $CLASH_LOG。继续下一批次。"
         cat "$CLASH_LOG"
+        cp "$TEMP_CLASH_CONFIG" "data/clash_config_batch_$i.yaml" # 保存批次配置文件供调试
         kill $CLASH_PID 2>/dev/null
         # 清理批次临时文件
         rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
         # 提交当前成果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config_batch_*.yaml
         git commit -m "Save batch $((i+1)) results despite Clash API failure" || echo "无中间结果需要提交"
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
@@ -225,7 +227,9 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
             f.write(f"{node['name']}: passed\n")
 ' "$BATCH_ALL_NODES_FILE" "data/batch_$i.json" "$ALL_NODES_FILE"
 
-    # 验证文件存在
+    # 验证文件存在并记录通过节点数
+    BATCH_PASSED_COUNT=$(grep -c ": passed" "$BATCH_ALL_NODES_FILE")
+    echo "  批次 $((i+1)) 测试完成: $BATCH_PASSED_COUNT 个节点通过。"
     if [ -s "$ALL_PASSED_NODES_JSON" ]; then
         echo "  批次 $((i+1)) 通过节点已保存到 $ALL_PASSED_NODES_JSON 和 $ALL_NODES_FILE。"
     else
@@ -235,7 +239,7 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
     # 提交批次结果
     git config user.name 'github-actions[bot]'
     git config user.email 'github-actions[bot]@users.noreply.github.com'
-    git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt
+    git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config_batch_*.yaml
     git commit -m "Save batch $((i+1)) results" || echo "无中间结果需要提交"
     git push || {
         echo "错误: git push 失败，查看远程仓库状态："
@@ -250,7 +254,24 @@ done
 
 echo "步骤 6: 生成最终 Clash 配置文件..."
 if [ ! -s "$ALL_PASSED_NODES_JSON" ]; then
-    echo "没有测试通过的节点，跳过生成 $FINAL_CLASH_CONFIG。"
+    echo "没有测试通过的节点，生成空的 $FINAL_CLASH_CONFIG。"
+    cat << EOF > "$FINAL_CLASH_CONFIG"
+port: 7890
+socks-port: 7891
+mode: rule
+log-level: info
+allow-lan: false
+external-controller: 127.0.0.1:9090
+secret: ""
+
+proxies: []
+proxy-groups:
+  - name: 'auto-test'
+    type: url-test
+    url: https://www.google.com/generate_204
+    interval: 300
+    proxies: []
+EOF
     exit 0
 fi
 
@@ -276,7 +297,7 @@ output_yaml_file = sys.argv[2]
 with open(input_json_file, "r", encoding="utf-8") as f:
     proxies_list = json.load(f)
 with open(output_yaml_file, "a", encoding="utf-8") as f:
-    yaml.dump(proxies_list, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+    yaml.dump(proxies_list if proxies_list else [], f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 ' "$ALL_PASSED_NODES_JSON" "$FINAL_CLASH_CONFIG" || {
     echo "错误: 无法生成 proxies 部分，查看 $ALL_PASSED_NODES_JSON 是否有效。"
     exit 1
@@ -299,6 +320,7 @@ with open(sys.argv[1], "a", encoding="utf-8") as f:
         f.write(f"      - \"{name}\"\n")
 ' "$FINAL_CLASH_CONFIG" || {
     echo "错误: 无法生成 proxy-groups 部分，查看 $FINAL_CLASH_CONFIG 是否有效。"
+    cat "$FINAL_CLASH_CONFIG"
     exit 1
 }
 

@@ -30,3 +30,4 @@ data/temp_sub_nodes.txt
 !data/filtered_nodes.txt
 !data/temp_all_raw_nodes.txt
 !data/failed_sub_urls.txt
+!data/backup_sources.list

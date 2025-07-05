@@ -1,0 +1,3015 @@
+port: 7890
+socks-port: 7891
+mode: rule
+log-level: debug
+allow-lan: false
+external-controller: 127.0.0.1:9090
+secret: ""
+
+proxies:
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_10
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE13
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_11
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE14
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation________443_3
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE15
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_9
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE16
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_10
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE17
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE18
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_11
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE19
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_22
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE2
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE20
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU________443_3
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE21
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__ITEL________443_3
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE22
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_23
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE3
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_24
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE4
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_3
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE5
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_25
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE6
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_26
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE7
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_27
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE8
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Zenlayer_Inc________443_3
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE9
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM1
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM2
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_12
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM3
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__WorkTitans_B.V.________443_3
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM4
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_13
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM5
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_14
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM6
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_15
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freevpn.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM7
+    headers:
+      Host: ads.ruangguru.com.freevpn.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AD__Andorra_Telecom________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AD1
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_28
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE1
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_12
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE10
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Svenska_AB________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE11
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__3nt_solutions_LLP________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE12
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_13
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE13
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_14
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE14
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE15
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_12
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE16
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_13
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE17
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE18
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_14
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE19
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_29
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE2
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_9
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE20
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE21
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__ITEL________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE22
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_30
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE3
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_31
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE4
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE5
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_32
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE6
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_33
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE7
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_34
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE8
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Zenlayer_Inc________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE9
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM1
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_9
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM2
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_16
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM3
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__WorkTitans_B.V.________443_4
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM4
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_17
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM5
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_18
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM6
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_19
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.najah.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM7
+    headers:
+      Host: ads.ruangguru.com.freexxx.najah.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AD__Andorra_Telecom________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AD1
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_35
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE1
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_15
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE10
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Svenska_AB________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE11
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__3nt_solutions_LLP________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE12
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_16
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE13
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_17
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE14
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE15
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_15
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE16
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_16
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE17
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_10
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE18
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_17
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE19
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_36
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE2
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_11
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE20
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE21
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__ITEL________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE22
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_37
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE3
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_38
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE4
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE5
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_39
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE6
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_40
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE7
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_41
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE8
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Zenlayer_Inc________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE9
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_10
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM1
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_11
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM2
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_20
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM3
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__WorkTitans_B.V.________443_5
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM4
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_21
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM5
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_22
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM6
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_23
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM7
+    headers:
+      Host: ads.ruangguru.com.freexxx.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AD__Andorra_Telecom________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AD1
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_42
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE1
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_18
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE10
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Svenska_AB________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE11
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__3nt_solutions_LLP________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE12
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_19
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE13
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_20
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE14
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE15
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_18
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE16
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_19
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE17
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_12
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE18
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_20
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE19
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_43
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE2
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_13
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE20
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE21
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__ITEL________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE22
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_44
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE3
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_45
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE4
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE5
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_46
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE6
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_47
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE7
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_48
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE8
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Zenlayer_Inc________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE9
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_12
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM1
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_13
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM2
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_24
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM3
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__WorkTitans_B.V.________443_6
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM4
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_25
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM5
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_26
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM6
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_27
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.turah.my.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM7
+    headers:
+      Host: ads.ruangguru.com.freexxx.turah.my.id
+  grpc-opts: null
+  udp: true
+- name: vless__AD__Andorra_Telecom________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AD1
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_49
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE1
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_21
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE10
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Svenska_AB________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE11
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__3nt_solutions_LLP________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE12
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_22
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE13
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_23
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE14
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE15
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_21
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE16
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_22
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE17
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_14
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE18
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_23
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE19
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_50
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE2
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_15
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE20
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE21
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__ITEL________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE22
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_51
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE3
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_52
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE4
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE5
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_53
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE6
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_54
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE7
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_55
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE8
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Zenlayer_Inc________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE9
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_14
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM1
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_15
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM2
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_28
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM3
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__WorkTitans_B.V.________443_7
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM4
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_29
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM5
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_30
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM6
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_31
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.freexxx.xhamster.biz.id
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM7
+    headers:
+      Host: ads.ruangguru.com.freexxx.xhamster.biz.id
+  grpc-opts: null
+  udp: true
+- name: vless__AD__Andorra_Telecom________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AD1
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_56
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE1
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_24
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE10
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Svenska_AB________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE11
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__3nt_solutions_LLP________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE12
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_25
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE13
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment________443_26
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE14
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE15
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_24
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE16
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_25
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE17
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_16
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE18
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Amazon_Data_Services_UAE________443_26
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE19
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_57
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE2
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer________443_17
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE20
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE21
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__ITEL________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE22
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_58
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE3
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_59
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE4
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE5
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_60
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE6
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_61
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE7
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation________443_62
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE8
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Zenlayer_Inc________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AE9
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_16
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM1
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_17
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM2
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_32
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM3
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__WorkTitans_B.V.________443_8
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM4
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_33
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM5
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_34
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM6
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Proitlab_LLC________443_35
+  type: vless
+  server: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1@ads.ruangguru.com.web.ndeso.xyz
+  port: 443
+  uuid: aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-CF-Proxy-AM7
+    headers:
+      Host: ads.ruangguru.com.web.ndeso.xyz
+  grpc-opts: null
+  udp: true
+- name: vless__SG__Cloudflare_Warp______vless___ab364d75-757e-4497-b217-8096873fe48b_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG12__SG__Cloudflare_Warp_______443
+  type: vless
+  server: ab364d75-757e-4497-b217-8096873fe48b@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: ab364d75-757e-4497-b217-8096873fe48b
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/138.2.74.219-28616
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__ID__Akamai_Connected_Cloud______vless___acd6f732-cd6c-4cac-b6be-785489ff3526_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID9__ID__Akamai_Connected_Cloud_______443
+  type: vless
+  server: acd6f732-cd6c-4cac-b6be-785489ff3526@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: acd6f732-cd6c-4cac-b6be-785489ff3526
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/172.235.251.7-587
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation______vless___aecab83d-785e-478b-99eb-5c3dbf18df63_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE3__AE__Oracle_Corporation_______443
+  type: vless
+  server: aecab83d-785e-478b-99eb-5c3dbf18df63@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: aecab83d-785e-478b-99eb-5c3dbf18df63
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/129.151.128.114=34834
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless_Telegram___Devefun__li__br__8080_7
+  type: vless
+  server: b2beae77-3ad5-49fe-9f9f-550a1e43bc40@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  port: 8080
+  uuid: b2beae77-3ad5-49fe-9f9f-550a1e43bc40
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: b2beae77-3ad5-49fe-9f9f-550a1e43bc40@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  grpc-opts: null
+  udp: true
+- name: vless_Telegram___Devefun_8080_7
+  type: vless
+  server: b2beae77-3ad5-49fe-9f9f-550a1e43bc40@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  port: 8080
+  uuid: b2beae77-3ad5-49fe-9f9f-550a1e43bc40
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: b2beae77-3ad5-49fe-9f9f-550a1e43bc40@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  grpc-opts: null
+  udp: true
+- name: vless__SG__Alibaba______vless___b5cc16d9-3df7-4626-bc5e-2f9f7e61befe_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG14__SG__Alibaba_______443
+  type: vless
+  server: b5cc16d9-3df7-4626-bc5e-2f9f7e61befe@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: b5cc16d9-3df7-4626-bc5e-2f9f7e61befe
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/47.236.22.194-52324
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless_Telegram___Devefun__li__br__8080_8
+  type: vless
+  server: b9618acf-23d9-4d66-9946-8687339d0e60@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  port: 8080
+  uuid: b9618acf-23d9-4d66-9946-8687339d0e60
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: b9618acf-23d9-4d66-9946-8687339d0e60@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  grpc-opts: null
+  udp: true
+- name: vless_Telegram___Devefun_8080_8
+  type: vless
+  server: b9618acf-23d9-4d66-9946-8687339d0e60@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  port: 8080
+  uuid: b9618acf-23d9-4d66-9946-8687339d0e60
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: b9618acf-23d9-4d66-9946-8687339d0e60@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  grpc-opts: null
+  udp: true
+- name: vless__ID__Google_Cloud______vless___bc02bb1d-021e-4136-8b87-14188a5b24dc_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID14__ID__Google_Cloud_______443
+  type: vless
+  server: bc02bb1d-021e-4136-8b87-14188a5b24dc@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: bc02bb1d-021e-4136-8b87-14188a5b24dc
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/35.219.50.99-443
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__3nt_solutions_LLP______vless___bce8043b-6c88-486f-bc4b-d2631fbf6f9f_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE8__AE__3nt_solutions_LLP_______443
+  type: vless
+  server: bce8043b-6c88-486f-bc4b-d2631fbf6f9f@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: bce8043b-6c88-486f-bc4b-d2631fbf6f9f
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/176.97.67.38=443
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__ID__Akamai_Connected_Cloud______vless___c8303ec2-873d-40c7-b14e-50d9dbda5796_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID16__ID__Akamai_Connected_Cloud_______443
+  type: vless
+  server: c8303ec2-873d-40c7-b14e-50d9dbda5796@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: c8303ec2-873d-40c7-b14e-50d9dbda5796
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/172.232.237.91-587
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__BlueVPS_OU______vless___ce13237c-8c63-4012-b89c-5e7f9b7bded4_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE18__AE__BlueVPS_OU_______443
+  type: vless
+  server: ce13237c-8c63-4012-b89c-5e7f9b7bded4@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: ce13237c-8c63-4012-b89c-5e7f9b7bded4
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/45.86.228.104=443
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__ID__PT_Pusat_Media_Indonesia______vless___d057cabf-b1f1-4692-805f-03ffd5df6f6c_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID2__ID__PT_Pusat_Media_Indonesia_______443
+  type: vless
+  server: d057cabf-b1f1-4692-805f-03ffd5df6f6c@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: d057cabf-b1f1-4692-805f-03ffd5df6f6c
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/103.6.207.108-8080
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless_Telegram___Devefun__li__br__8080_9
+  type: vless
+  server: d0f3b1e4-9d4d-4a49-b8b6-c36018984699@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  port: 8080
+  uuid: d0f3b1e4-9d4d-4a49-b8b6-c36018984699
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: d0f3b1e4-9d4d-4a49-b8b6-c36018984699@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  grpc-opts: null
+  udp: true
+- name: vless_Telegram___Devefun_8080_9
+  type: vless
+  server: d0f3b1e4-9d4d-4a49-b8b6-c36018984699@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  port: 8080
+  uuid: d0f3b1e4-9d4d-4a49-b8b6-c36018984699
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: d0f3b1e4-9d4d-4a49-b8b6-c36018984699@afi.we-are-team-xstack-this-is-free-config-join-us-enjoy.net
+  grpc-opts: null
+  udp: true
+- name: vless__AE__IROKO_Networks_Corporation______vless___d3df9fa1-f57a-41b5-965b-e8a1a9bddbd7_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE9__AE__IROKO_Networks_Corporation_______443
+  type: vless
+  server: d3df9fa1-f57a-41b5-965b-e8a1a9bddbd7@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: d3df9fa1-f57a-41b5-965b-e8a1a9bddbd7
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/176.97.78.80=2053
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__G-Core_Labs_Customer_assignment______vless___df4b6309-2e3c-4390-ad14-fcce553781d2_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE13__AE__G-Core_Labs_Customer_assignment_______443
+  type: vless
+  server: df4b6309-2e3c-4390-ad14-fcce553781d2@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: df4b6309-2e3c-4390-ad14-fcce553781d2
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/217.195.200.153=1
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__SG__Oracle_Cloud______vless___e3498389-9104-408d-b638-ae1e76ce9649_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG6__SG__Oracle_Cloud_______443
+  type: vless
+  server: e3498389-9104-408d-b638-ae1e76ce9649@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: e3498389-9104-408d-b638-ae1e76ce9649
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/213.35.108.135-12596
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation______vless___e8c49701-7960-4f6f-9e51-eee5439cdad6_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE11__AE__Oracle_Corporation_______443
+  type: vless
+  server: e8c49701-7960-4f6f-9e51-eee5439cdad6@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: e8c49701-7960-4f6f-9e51-eee5439cdad6
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/193.123.90.82=12648
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__AM__Telecom_Armenia_OJSC______vless___e95678eb-032d-4c29-bbb5-71bfe4a73c60_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AM1__AM__Telecom_Armenia_OJSC_______443
+  type: vless
+  server: e95678eb-032d-4c29-bbb5-71bfe4a73c60@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: e95678eb-032d-4c29-bbb5-71bfe4a73c60
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/178.160.195.187=443
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Oracle_Corporation______vless___eaedccb2-0bf8-4f71-8aa3-df2c3f2dc5dc_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE5__AE__Oracle_Corporation_______443
+  type: vless
+  server: eaedccb2-0bf8-4f71-8aa3-df2c3f2dc5dc@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: eaedccb2-0bf8-4f71-8aa3-df2c3f2dc5dc
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/139.185.39.237=48008
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__SG__Alibaba______vless___efc526e9-cfba-4ee4-95fa-bc0438898267_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG8__SG__Alibaba_______443
+  type: vless
+  server: efc526e9-cfba-4ee4-95fa-bc0438898267@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: efc526e9-cfba-4ee4-95fa-bc0438898267
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/47.74.254.191-8900
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__AE__Private_Customer______vless___f5356943-ea9e-4be8-8d32-d18fcb9657ed_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE23__AE__Private_Customer_______443
+  type: vless
+  server: f5356943-ea9e-4be8-8d32-d18fcb9657ed@ads.ruangguru.com.joss.checker-ip.web.id
+  port: 443
+  uuid: f5356943-ea9e-4be8-8d32-d18fcb9657ed
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /Free-VPN-CF-Geo-Project/85.237.211.59=8443
+    headers:
+      Host: ads.ruangguru.com.joss.checker-ip.web.id
+  grpc-opts: null
+  udp: true
+- name: vless__SG__Oracle_Cloud______vless___f6167760-a1d2-4d07-94e5-2e4af3e41d3f_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG5__SG__Oracle_Cloud_______443
+  type: vless
+  server: f6167760-a1d2-4d07-94e5-2e4af3e41d3f@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: f6167760-a1d2-4d07-94e5-2e4af3e41d3f
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/129.150.49.58-18650
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+- name: vless__ID__Tencent_cloud_computing______vless___f87e3755-da2c-4823-b4b8-5f4a14a98ad8_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID13__ID__Tencent_cloud_computing_______443
+  type: vless
+  server: f87e3755-da2c-4823-b4b8-5f4a14a98ad8@account-gopay.midtrans.com.but.xsmnet.buzz
+  port: 443
+  uuid: f87e3755-da2c-4823-b4b8-5f4a14a98ad8
+  tls: true
+  flow: null
+  network: ws
+  ws-opts:
+    path: /xsm-Code/43.133.149.163-52698
+    headers:
+      Host: account-gopay.midtrans.com.but.xsmnet.buzz
+  grpc-opts: null
+  udp: true
+proxy-groups:
+  - name: 'auto-test'
+    type: url-test
+    interval: 300
+    url: https://www.google.com/generate_204
+    proxies:
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_10"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_11"
+      - "vless__AE__IROKO_Networks_Corporation________443_3"
+      - "vless__AE__Amazon_Data_Services_UAE________443_9"
+      - "vless__AE__Amazon_Data_Services_UAE________443_10"
+      - "vless__AE__Private_Customer________443_6"
+      - "vless__AE__Amazon_Data_Services_UAE________443_11"
+      - "vless__AE__Oracle_Corporation________443_22"
+      - "vless__AE__Private_Customer________443_7"
+      - "vless__AE__BlueVPS_OU________443_3"
+      - "vless__AE__ITEL________443_3"
+      - "vless__AE__Oracle_Corporation________443_23"
+      - "vless__AE__Oracle_Corporation________443_24"
+      - "vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_3"
+      - "vless__AE__Oracle_Corporation________443_25"
+      - "vless__AE__Oracle_Corporation________443_26"
+      - "vless__AE__Oracle_Corporation________443_27"
+      - "vless__AE__Zenlayer_Inc________443_3"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_6"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_7"
+      - "vless__AM__Proitlab_LLC________443_12"
+      - "vless__AM__WorkTitans_B.V.________443_3"
+      - "vless__AM__Proitlab_LLC________443_13"
+      - "vless__AM__Proitlab_LLC________443_14"
+      - "vless__AM__Proitlab_LLC________443_15"
+      - "vless__AD__Andorra_Telecom________443_4"
+      - "vless__AE__Oracle_Corporation________443_28"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_12"
+      - "vless__AE__Oracle_Svenska_AB________443_4"
+      - "vless__AE__3nt_solutions_LLP________443_4"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_13"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_14"
+      - "vless__AE__IROKO_Networks_Corporation________443_4"
+      - "vless__AE__Amazon_Data_Services_UAE________443_12"
+      - "vless__AE__Amazon_Data_Services_UAE________443_13"
+      - "vless__AE__Private_Customer________443_8"
+      - "vless__AE__Amazon_Data_Services_UAE________443_14"
+      - "vless__AE__Oracle_Corporation________443_29"
+      - "vless__AE__Private_Customer________443_9"
+      - "vless__AE__BlueVPS_OU________443_4"
+      - "vless__AE__ITEL________443_4"
+      - "vless__AE__Oracle_Corporation________443_30"
+      - "vless__AE__Oracle_Corporation________443_31"
+      - "vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_4"
+      - "vless__AE__Oracle_Corporation________443_32"
+      - "vless__AE__Oracle_Corporation________443_33"
+      - "vless__AE__Oracle_Corporation________443_34"
+      - "vless__AE__Zenlayer_Inc________443_4"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_8"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_9"
+      - "vless__AM__Proitlab_LLC________443_16"
+      - "vless__AM__WorkTitans_B.V.________443_4"
+      - "vless__AM__Proitlab_LLC________443_17"
+      - "vless__AM__Proitlab_LLC________443_18"
+      - "vless__AM__Proitlab_LLC________443_19"
+      - "vless__AD__Andorra_Telecom________443_5"
+      - "vless__AE__Oracle_Corporation________443_35"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_15"
+      - "vless__AE__Oracle_Svenska_AB________443_5"
+      - "vless__AE__3nt_solutions_LLP________443_5"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_16"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_17"
+      - "vless__AE__IROKO_Networks_Corporation________443_5"
+      - "vless__AE__Amazon_Data_Services_UAE________443_15"
+      - "vless__AE__Amazon_Data_Services_UAE________443_16"
+      - "vless__AE__Private_Customer________443_10"
+      - "vless__AE__Amazon_Data_Services_UAE________443_17"
+      - "vless__AE__Oracle_Corporation________443_36"
+      - "vless__AE__Private_Customer________443_11"
+      - "vless__AE__BlueVPS_OU________443_5"
+      - "vless__AE__ITEL________443_5"
+      - "vless__AE__Oracle_Corporation________443_37"
+      - "vless__AE__Oracle_Corporation________443_38"
+      - "vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_5"
+      - "vless__AE__Oracle_Corporation________443_39"
+      - "vless__AE__Oracle_Corporation________443_40"
+      - "vless__AE__Oracle_Corporation________443_41"
+      - "vless__AE__Zenlayer_Inc________443_5"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_10"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_11"
+      - "vless__AM__Proitlab_LLC________443_20"
+      - "vless__AM__WorkTitans_B.V.________443_5"
+      - "vless__AM__Proitlab_LLC________443_21"
+      - "vless__AM__Proitlab_LLC________443_22"
+      - "vless__AM__Proitlab_LLC________443_23"
+      - "vless__AD__Andorra_Telecom________443_6"
+      - "vless__AE__Oracle_Corporation________443_42"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_18"
+      - "vless__AE__Oracle_Svenska_AB________443_6"
+      - "vless__AE__3nt_solutions_LLP________443_6"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_19"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_20"
+      - "vless__AE__IROKO_Networks_Corporation________443_6"
+      - "vless__AE__Amazon_Data_Services_UAE________443_18"
+      - "vless__AE__Amazon_Data_Services_UAE________443_19"
+      - "vless__AE__Private_Customer________443_12"
+      - "vless__AE__Amazon_Data_Services_UAE________443_20"
+      - "vless__AE__Oracle_Corporation________443_43"
+      - "vless__AE__Private_Customer________443_13"
+      - "vless__AE__BlueVPS_OU________443_6"
+      - "vless__AE__ITEL________443_6"
+      - "vless__AE__Oracle_Corporation________443_44"
+      - "vless__AE__Oracle_Corporation________443_45"
+      - "vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_6"
+      - "vless__AE__Oracle_Corporation________443_46"
+      - "vless__AE__Oracle_Corporation________443_47"
+      - "vless__AE__Oracle_Corporation________443_48"
+      - "vless__AE__Zenlayer_Inc________443_6"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_12"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_13"
+      - "vless__AM__Proitlab_LLC________443_24"
+      - "vless__AM__WorkTitans_B.V.________443_6"
+      - "vless__AM__Proitlab_LLC________443_25"
+      - "vless__AM__Proitlab_LLC________443_26"
+      - "vless__AM__Proitlab_LLC________443_27"
+      - "vless__AD__Andorra_Telecom________443_7"
+      - "vless__AE__Oracle_Corporation________443_49"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_21"
+      - "vless__AE__Oracle_Svenska_AB________443_7"
+      - "vless__AE__3nt_solutions_LLP________443_7"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_22"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_23"
+      - "vless__AE__IROKO_Networks_Corporation________443_7"
+      - "vless__AE__Amazon_Data_Services_UAE________443_21"
+      - "vless__AE__Amazon_Data_Services_UAE________443_22"
+      - "vless__AE__Private_Customer________443_14"
+      - "vless__AE__Amazon_Data_Services_UAE________443_23"
+      - "vless__AE__Oracle_Corporation________443_50"
+      - "vless__AE__Private_Customer________443_15"
+      - "vless__AE__BlueVPS_OU________443_7"
+      - "vless__AE__ITEL________443_7"
+      - "vless__AE__Oracle_Corporation________443_51"
+      - "vless__AE__Oracle_Corporation________443_52"
+      - "vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_7"
+      - "vless__AE__Oracle_Corporation________443_53"
+      - "vless__AE__Oracle_Corporation________443_54"
+      - "vless__AE__Oracle_Corporation________443_55"
+      - "vless__AE__Zenlayer_Inc________443_7"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_14"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_15"
+      - "vless__AM__Proitlab_LLC________443_28"
+      - "vless__AM__WorkTitans_B.V.________443_7"
+      - "vless__AM__Proitlab_LLC________443_29"
+      - "vless__AM__Proitlab_LLC________443_30"
+      - "vless__AM__Proitlab_LLC________443_31"
+      - "vless__AD__Andorra_Telecom________443_8"
+      - "vless__AE__Oracle_Corporation________443_56"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_24"
+      - "vless__AE__Oracle_Svenska_AB________443_8"
+      - "vless__AE__3nt_solutions_LLP________443_8"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_25"
+      - "vless__AE__G-Core_Labs_Customer_assignment________443_26"
+      - "vless__AE__IROKO_Networks_Corporation________443_8"
+      - "vless__AE__Amazon_Data_Services_UAE________443_24"
+      - "vless__AE__Amazon_Data_Services_UAE________443_25"
+      - "vless__AE__Private_Customer________443_16"
+      - "vless__AE__Amazon_Data_Services_UAE________443_26"
+      - "vless__AE__Oracle_Corporation________443_57"
+      - "vless__AE__Private_Customer________443_17"
+      - "vless__AE__BlueVPS_OU________443_8"
+      - "vless__AE__ITEL________443_8"
+      - "vless__AE__Oracle_Corporation________443_58"
+      - "vless__AE__Oracle_Corporation________443_59"
+      - "vless__AE__UCLOUD_INFORMATION_TECHNOLOGY__HK__LIMITED________443_8"
+      - "vless__AE__Oracle_Corporation________443_60"
+      - "vless__AE__Oracle_Corporation________443_61"
+      - "vless__AE__Oracle_Corporation________443_62"
+      - "vless__AE__Zenlayer_Inc________443_8"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_16"
+      - "vless__AM__GLOBAL_CONNECTIVITY_SOLUTIONS_LLP________443_17"
+      - "vless__AM__Proitlab_LLC________443_32"
+      - "vless__AM__WorkTitans_B.V.________443_8"
+      - "vless__AM__Proitlab_LLC________443_33"
+      - "vless__AM__Proitlab_LLC________443_34"
+      - "vless__AM__Proitlab_LLC________443_35"
+      - "vless__SG__Cloudflare_Warp______vless___ab364d75-757e-4497-b217-8096873fe48b_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG12__SG__Cloudflare_Warp_______443"
+      - "vless__ID__Akamai_Connected_Cloud______vless___acd6f732-cd6c-4cac-b6be-785489ff3526_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID9__ID__Akamai_Connected_Cloud_______443"
+      - "vless__AE__Oracle_Corporation______vless___aecab83d-785e-478b-99eb-5c3dbf18df63_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE3__AE__Oracle_Corporation_______443"
+      - "vless_Telegram___Devefun__li__br__8080_7"
+      - "vless_Telegram___Devefun_8080_7"
+      - "vless__SG__Alibaba______vless___b5cc16d9-3df7-4626-bc5e-2f9f7e61befe_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG14__SG__Alibaba_______443"
+      - "vless_Telegram___Devefun__li__br__8080_8"
+      - "vless_Telegram___Devefun_8080_8"
+      - "vless__ID__Google_Cloud______vless___bc02bb1d-021e-4136-8b87-14188a5b24dc_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID14__ID__Google_Cloud_______443"
+      - "vless__AE__3nt_solutions_LLP______vless___bce8043b-6c88-486f-bc4b-d2631fbf6f9f_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE8__AE__3nt_solutions_LLP_______443"
+      - "vless__ID__Akamai_Connected_Cloud______vless___c8303ec2-873d-40c7-b14e-50d9dbda5796_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID16__ID__Akamai_Connected_Cloud_______443"
+      - "vless__AE__BlueVPS_OU______vless___ce13237c-8c63-4012-b89c-5e7f9b7bded4_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE18__AE__BlueVPS_OU_______443"
+      - "vless__ID__PT_Pusat_Media_Indonesia______vless___d057cabf-b1f1-4692-805f-03ffd5df6f6c_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID2__ID__PT_Pusat_Media_Indonesia_______443"
+      - "vless_Telegram___Devefun__li__br__8080_9"
+      - "vless_Telegram___Devefun_8080_9"
+      - "vless__AE__IROKO_Networks_Corporation______vless___d3df9fa1-f57a-41b5-965b-e8a1a9bddbd7_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE9__AE__IROKO_Networks_Corporation_______443"
+      - "vless__AE__G-Core_Labs_Customer_assignment______vless___df4b6309-2e3c-4390-ad14-fcce553781d2_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE13__AE__G-Core_Labs_Customer_assignment_______443"
+      - "vless__SG__Oracle_Cloud______vless___e3498389-9104-408d-b638-ae1e76ce9649_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG6__SG__Oracle_Cloud_______443"
+      - "vless__AE__Oracle_Corporation______vless___e8c49701-7960-4f6f-9e51-eee5439cdad6_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE11__AE__Oracle_Corporation_______443"
+      - "vless__AM__Telecom_Armenia_OJSC______vless___e95678eb-032d-4c29-bbb5-71bfe4a73c60_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AM1__AM__Telecom_Armenia_OJSC_______443"
+      - "vless__AE__Oracle_Corporation______vless___eaedccb2-0bf8-4f71-8aa3-df2c3f2dc5dc_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE5__AE__Oracle_Corporation_______443"
+      - "vless__SG__Alibaba______vless___efc526e9-cfba-4ee4-95fa-bc0438898267_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG8__SG__Alibaba_______443"
+      - "vless__AE__Private_Customer______vless___f5356943-ea9e-4be8-8d32-d18fcb9657ed_ads.ruangguru.com.joss.checker-ip.web.id_443_encryption_none_security_tls_sni_ads.ruangguru.com.joss.checker-ip.web.id_fp_randomized_type_ws_host_ads.ruangguru.com.joss.checker-ip.web.id_path__Free-VPN-CF-Geo-Project_AE23__AE__Private_Customer_______443"
+      - "vless__SG__Oracle_Cloud______vless___f6167760-a1d2-4d07-94e5-2e4af3e41d3f_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_SG5__SG__Oracle_Cloud_______443"
+      - "vless__ID__Tencent_cloud_computing______vless___f87e3755-da2c-4823-b4b8-5f4a14a98ad8_account-gopay.midtrans.com.but.xsmnet.buzz_443_encryption_none_security_tls_sni_account-gopay.midtrans.com.but.xsmnet.buzz_fp_randomized_type_ws_host_account-gopay.midtrans.com.but.xsmnet.buzz_path__xsm-Code_ID13__ID__Tencent_cloud_computing_______443"

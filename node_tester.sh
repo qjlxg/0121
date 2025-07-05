@@ -9,18 +9,18 @@ PREVIOUS_NODES_FILE="data/previous_nodes.txt"
 TEMP_SOURCES_LIST="data/temp_sources_list.txt"
 TEMP_ALL_RAW_NODES="data/temp_all_raw_nodes.txt"
 TEMP_NEW_RAW_NODES="data/temp_new_raw_nodes.txt"
-TEMP_SIMPLE_TEST_PASS="data/temp_simple_test_pass.txt"
 TEMP_CLASH_CONFIG="data/clash_config.yaml"
 TEMP_PARSED_NODES_JSON="data/parsed_nodes.json"
+CLASH_LOG="data/clash.log"
 
 # --- 配置限制 ---
-MAX_NODES_FOR_CLASH_TEST=5000000
+MAX_NODES_FOR_CLASH_TEST=10000  # 降低最大测试节点数量
 
 # 清理旧的临时文件
 rm -rf data && mkdir -p data
 
 echo "步骤 1: 获取主 sources 列表..."
-curl -s --retry 3 "$SOURCES_LIST_URL" | grep -v '^#' > "$TEMP_SOURCES_LIST"
+curl -s --retry 3 --connect-timeout 10 "$SOURCES_LIST_URL" | grep -v '^#' > "$TEMP_SOURCES_LIST"
 
 if [ ! -s "$TEMP_SOURCES_LIST" ]; then
     echo "错误: 无法获取主 sources 列表或列表为空。退出。"
@@ -33,7 +33,7 @@ while IFS= read -r sub_url; do
     if [ -z "$sub_url" ]; then
         continue
     fi
-    curl -s --retry 3 "$sub_url" | grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' >> "$TEMP_ALL_RAW_NODES"
+    curl -s --retry 3 --connect-timeout 10 "$sub_url" | grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' >> "$TEMP_ALL_RAW_NODES"
     ((SUB_URL_COUNT++))
 done < "$TEMP_SOURCES_LIST"
 echo "  从 $SUB_URL_COUNT 个子来源 URL 获取完成。"
@@ -89,7 +89,7 @@ cat << EOF > "$TEMP_CLASH_CONFIG"
 port: 7890
 socks-port: 7891
 mode: rule
-log-level: info
+log-level: debug
 allow-lan: false
 external-controller: 127.0.0.1:9090
 secret: ""
@@ -125,14 +125,22 @@ with open(sys.argv[1], "a") as f:
 ' "$TEMP_CLASH_CONFIG"
 
 echo "步骤 6: 运行 Clash 进行连接测试..."
-./clash -f "$TEMP_CLASH_CONFIG" -d . &
+./clash -f "$TEMP_CLASH_CONFIG" -d . > "$CLASH_LOG" 2>&1 &
 CLASH_PID=$!
 echo "  Clash 已启动，PID: $CLASH_PID。等待加载..."
 
-# 检查 Clash 是否正常启动
-sleep 5
+# 等待 Clash 启动并检查 API 可用性
+sleep 15
 if ! ps -p $CLASH_PID > /dev/null; then
-    echo "错误: Clash 启动失败。退出。"
+    echo "错误: Clash 启动失败，查看日志 $CLASH_LOG。"
+    cat "$CLASH_LOG"
+    exit 1
+fi
+
+# 检查 Clash API 是否可用
+if ! curl -s --connect-timeout 5 "http://127.0.0.1:9090/proxies" > /dev/null; then
+    echo "错误: Clash API (127.0.0.1:9090) 不可用，查看日志 $CLASH_LOG。"
+    cat "$CLASH_LOG"
     exit 1
 fi
 

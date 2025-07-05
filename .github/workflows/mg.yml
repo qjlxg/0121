@@ -1,207 +1,74 @@
-name: Node Tester and Updater
+name: Node Tester
 
 on:
-  workflow_dispatch: # 允许手动触发
-  schedule:
-    - cron: '0 */6 * * *' # 每6小时运行一次
   push:
-    branches:
-      - main # 当 main 分支有新提交时触发
-
-# 并发控制，避免多个工作流同时运行
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}
-  cancel-in-progress: true
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 0:00 跑
+  workflow_dispatch:
 
 jobs:
-  test_nodes:
+  test-nodes:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0 # 获取完整历史，方便 rebase
-        lfs: true # 启用 Git LFS
+      - uses: actions/checkout@v4
 
-    - name: Check disk space
-      run: |
-        df -h
-        FREE_SPACE=$(df -B1 . | tail -1 | awk '{print $4}')
-        if [ "$FREE_SPACE" -lt 5000000000 ]; then
-          echo "错误: 磁盘空间不足（少于 5GB），退出。"
-          exit 1
-        fi
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
 
-    - name: Clean working directory
-      run: |
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        rm -rf clash/*
-        git rm -r --cached clash/* 2>/dev/null || true
-        git add .
-        git commit -m "清理工作目录" || echo "无变更需要提交"
-        git push || {
-          echo "错误: git push 失败，查看远程仓库状态："
-          git status
-          git log --oneline -n 5
-          exit 1
-        }
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests aiohttp
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: 创建日志和输出目录
+        run: |
+          mkdir -p data
+          touch data/fetch_nodes.log data/failed_sub_urls.txt data/temp_all_raw_nodes.txt
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
-
-    - name: Download Clash.Meta (Mihomo)
-      run: |
-        rm -rf clash
-        mkdir -p clash
-        MIHOMO_VERSION=$(curl -s "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | grep -oP '"tag_name": "\K[^"]+')
-        echo "使用 Mihomo 版本: $MIHOMO_VERSION"
-        MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
-        wget -qO- "$MIHOMO_URL" | gzip -d > clash/clash
-        chmod +x clash/clash
-        # 验证 Clash 可执行文件
-        if ! ./clash/clash -v > /dev/null; then
-          echo "错误: Clash 可执行文件无效"
-          ./clash/clash -v || true # 显示版本错误详情
-          exit 1
-        fi
-      env:
-        pythonLocation: /opt/hostedtoolcache/Python/3.13.5/x64
-        PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
-        Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
-        Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
-        Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
-        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib
-
-    - name: Install dependencies
-      run: |
-        sudo apt-get update --quiet
-        sudo apt-get install -y --quiet iputils-ping curl jq
-        pip install --quiet pyyaml requests
-
-    - name: Make scripts executable
-      run: |
-        chmod +x ./prefilter_nodes.sh
-        chmod +x ./node_tester.sh
-        chmod +x ./convert_nodes.py
-        chmod +x ./test_clash_api.py
-
-    - name: Fetch and Prefilter Nodes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        mkdir -p data
-        # 步骤 1: 读取本地 sources 列表
-        echo "读取本地 sources 列表..." | tee -a data/fetch_nodes.log
-        BACKUP_SOURCES_LIST="data/backup_sources.list"
-        if [ ! -f "$BACKUP_SOURCES_LIST" ] || [ ! -s "$BACKUP_SOURCES_LIST" ]; then
-          echo "错误: 本地 $BACKUP_SOURCES_LIST 不存在或为空。退出。" | tee -a data/fetch_nodes.log
-          exit 1
-        fi
-        cp "$BACKUP_SOURCES_LIST" data/temp_sources_list.txt
-        SOURCES_COUNT=$(grep -v '^#' data/temp_sources_list.txt | wc -l)
-        echo "  获取到 $SOURCES_COUNT 个子来源。" | tee -a data/fetch_nodes.log
-
-        # 步骤 2: 从子来源获取节点 URL
-        echo "从子来源获取节点 URL..." | tee -a data/fetch_nodes.log
-        SUB_URL_COUNT=0
-        SUCCESS_COUNT=0
-        NODE_COUNT=0
-        rm -f data/temp_all_raw_nodes.txt data/failed_sub_urls.txt
-        touch data/temp_all_raw_nodes.txt data/failed_sub_urls.txt
-        while IFS= read -r sub_url; do
-          if [ -z "$sub_url" ] || [[ "$sub_url" =~ ^# ]]; then
-            continue
-          fi
-          echo "  正在拉取子来源: $sub_url" >> data/fetch_nodes.log
-          HTTP_STATUS=$(curl -s --retry 3 --connect-timeout 15 -w "%{http_code}" "$sub_url" -o data/temp_sub_nodes.txt 2>> data/fetch_nodes.log)
-          if [ "$HTTP_STATUS" -eq 200 ] && [ -s data/temp_sub_nodes.txt ]; then
-            SUB_NODE_COUNT=$(grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' data/temp_sub_nodes.txt | wc -l)
-            grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' data/temp_sub_nodes.txt >> data/temp_all_raw_nodes.txt
-            echo "  $sub_url: 成功 (HTTP $HTTP_STATUS, 节点数: $SUB_NODE_COUNT)" >> data/fetch_nodes.log
-            ((SUCCESS_COUNT++))
-            ((NODE_COUNT+=SUB_NODE_COUNT))
+      - name: 并行拉取节点
+        run: |
+          # 从本地 backup_sources.list 读取子来源
+          cat data/backup_sources.list | grep -v '^#' | grep -v '^$' | xargs -n 1 -P 20 -I {} bash -c '
+            echo "拉取 {} ..." >> data/fetch_nodes.log
+            nodes=$(curl -s -m 10 "{}" | grep -E "^(hysteria2|vmess|trojan|ss|ssr|vless)://")
+            if [ -n "$nodes" ]; then
+              echo "$nodes" >> data/temp_all_raw_nodes.txt
+              echo "成功从 {} 获取 $(echo "$nodes" | wc -l) 个节点" >> data/fetch_nodes.log
+            else
+              echo "失败: {} 无节点或无法访问" >> data/fetch_nodes.log
+              echo "{}" >> data/failed_sub_urls.txt
+            fi
+          '
+          # 检查是否获取到节点
+          if [ -s data/temp_all_raw_nodes.txt ]; then
+            echo "成功生成 data/temp_all_raw_nodes.txt，节点数: $(wc -l < data/temp_all_raw_nodes.txt)"
           else
-            echo "  $sub_url: 失败 (HTTP $HTTP_STATUS)" >> data/fetch_nodes.log
-            echo "$sub_url" >> data/failed_sub_urls.txt
+            echo "警告: data/temp_all_raw_nodes.txt 为空，但继续运行" >> data/fetch_nodes.log
           fi
-          ((SUB_URL_COUNT++))
-        done < data/temp_sources_list.txt
-        echo "  从 $SUB_URL_COUNT 个子来源获取完成，成功 $SUCCESS_COUNT 个，失败 $((SUB_URL_COUNT - SUCCESS_COUNT)) 个，总计 $NODE_COUNT 个节点。" | tee -a data/fetch_nodes.log
-        rm -f data/temp_sub_nodes.txt
 
-        # 提交拉取结果
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/temp_all_raw_nodes.txt data/fetch_nodes.log data/failed_sub_urls.txt data/backup_sources.list
-        git commit -m "保存节点拉取结果" || echo "无拉取结果需要提交"
-        git push || {
-          echo "错误: git push 失败，查看远程仓库状态："
-          git status
-          git log --oneline -n 5
-          exit 1
-        }
+      - name: 运行预过滤脚本
+        run: |
+          bash prefilter_nodes.sh
+          if [ -s data/filtered_nodes.txt ]; then
+            echo "预过滤完成，生成 data/filtered_nodes.txt，节点数: $(wc -l < data/filtered_nodes.txt)"
+          else
+            echo "警告: data/filtered_nodes.txt 为空，继续运行" >> data/fetch_nodes.log
+          fi
 
-        if [ ! -s data/temp_all_raw_nodes.txt ]; then
-          echo "错误: 从子来源获取的节点 URL 为空。查看 data/fetch_nodes.log 和 data/failed_sub_urls.txt。退出。" | tee -a data/fetch_nodes.log
-          exit 1
-        fi
-        RAW_NODES_COUNT=$(wc -l < data/temp_all_raw_nodes.txt)
-        echo "  获取到 $RAW_NODES_COUNT 个原始节点。" | tee -a data/fetch_nodes.log
+      - name: 运行节点测试脚本
+        run: |
+          bash node_tester.sh
+          echo "节点测试完成，查看 data/tested_nodes.txt"
 
-        # 步骤 3: 运行预过滤
-        echo "运行预过滤模块..." | tee -a data/fetch_nodes.log
-        ./prefilter_nodes.sh
-        if [ ! -s data/filtered_nodes.txt ]; then
-          echo "错误: 预过滤后无有效节点，退出。" | tee -a data/prefilter_nodes.log
-          exit 1
-        fi
-        FILTERED_NODES_COUNT=$(wc -l < data/filtered_nodes.txt)
-        echo "  预过滤后剩余 $FILTERED_NODES_COUNT 个节点。" | tee -a data/prefilter_nodes.log
-
-        # 提交预过滤结果
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/temp_all_raw_nodes.txt data/filtered_nodes.txt data/prefilter_nodes.log data/fetch_nodes.log data/failed_sub_urls.txt data/backup_sources.list
-        git commit -m "保存预过滤节点结果" || echo "无预过滤结果需要提交"
-        git push || {
-          echo "错误: git push 失败，查看远程仓库状态："
-          git status
-          git log --oneline -n 5
-          exit 1
-        }
-
-    - name: Run Node Tester Script
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        ./node_tester.sh
-
-    - name: Commit and push final results
-      run: |
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        echo "提交文件列表："
-        ls -l data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log data/fetch_nodes.log data/failed_sub_urls.txt data/backup_sources.list data/clash_config_batch_*.yaml 2>/dev/null || echo "部分文件不存在"
-        git add --ignore-errors data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log data/fetch_nodes.log data/failed_sub_urls.txt data/backup_sources.list
-        # 仅添加存在的批次配置文件
-        for file in data/clash_config_batch_*.yaml; do
-          [ -f "$file" ] && git add "$file"
-        done
-        git commit -m "更新测试节点结果" || echo "无变更需要提交"
-        git push || {
-          echo "错误: git push 失败，查看远程仓库状态："
-          git status
-          git log --oneline -n 5
-          exit 1
-        }
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 提交结果
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data/temp_all_raw_nodes.txt data/filtered_nodes.txt data/tested_nodes.txt data/fetch_nodes.log data/failed_sub_urls.txt
+          git commit -m "更新节点数据和日志 $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

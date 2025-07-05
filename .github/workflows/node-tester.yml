@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18' # Clash Dashboard 可能需要Node.js环境
+        node-version: '18' # Clash Dashboard 或某些前端工具可能需要Node.js环境
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -27,18 +27,23 @@ jobs:
         python-version: '3.x'
 
     - name: Download Clash.Meta (Mihomo)
-      # 获取最新稳定版 Mihomo 的下载链接
-      # 访问 https://github.com/MetaCubeX/mihomo/releases 获取最新版本
+      # 动态获取最新稳定版 Mihomo 的下载链接
+      # 访问 https://github.com/MetaCubeX/mihomo/releases 获取最新版本信息
       run: |
+        # 确保删除任何可能存在的 'clash' 文件或目录，以避免 "Is a directory" 错误
+        rm -rf clash
+        
         MIHOMO_VERSION=$(curl -s "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | grep -oP '"tag_name": "\K[^"]+')
         echo "Detected Mihomo version: $MIHOMO_VERSION"
+        # 根据检测到的版本构建下载URL
         MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
         echo "Downloading Mihomo from: $MIHOMO_URL"
         wget -qO- "$MIHOMO_URL" | gzip -d > clash
         chmod +x clash
       # 如果上面的动态获取链接失败，您可以手动指定一个版本和链接，例如：
       # run: |
-      #   MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/v1.18.7/mihomo-linux-amd64-v1.18.7.gz" # 示例版本，请替换为最新稳定版
+      #   rm -rf clash # 同样需要清理
+      #   MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/v1.19.11/mihomo-linux-amd64-v1.19.11.gz" # 示例版本，请替换为最新稳定版
       #   wget -qO- "$MIHOMO_URL" | gzip -d > clash
       #   chmod +x clash
 

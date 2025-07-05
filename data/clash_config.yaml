@@ -1,0 +1,255 @@
+port: 7890
+socks-port: 7891
+mode: rule
+log-level: info
+allow-lan: false
+external-controller: 127.0.0.1:9090
+secret: ""
+
+proxies:
+- name: trojan_Telegram___xStack_1935
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: 0UNVAcr7fM
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: 0UNVAcr7fM
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_1
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: 2ACeFv503x
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_1
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: 2ACeFv503x
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_2
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: IQslN5Uqd9
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_2
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: IQslN5Uqd9
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_3
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: SOCFAYeEIx
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_3
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: SOCFAYeEIx
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_4
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: TGCRCdJxbf
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_4
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: TGCRCdJxbf
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_5
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: WqN6KKLzY2
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_5
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: WqN6KKLzY2
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_6
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: YxYIbkcZvz
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_6
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: YxYIbkcZvz
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_7
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: fKM23Uzxmr
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_7
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: fKM23Uzxmr
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_8
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: wZQDYmaSnv
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_8
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: wZQDYmaSnv
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack_1935_9
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: yycd2CiAJQ
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+- name: trojan_Telegram___xStack__li__br__1935_9
+  type: trojan
+  server: afi.devefun.org
+  port: 1935
+  password: yycd2CiAJQ
+  tls: true
+  sni: afi.devefun.org
+  alpn:
+  - h2
+  skip-cert-verify: true
+  udp: true
+proxy-groups:
+  - name: 'auto-test'
+    type: url-test
+    url: https://www.google.com/generate_204
+    interval: 300
+    proxies:
+      - "trojan_Telegram___xStack_1935"
+      - "trojan_Telegram___xStack__li__br__1935"
+      - "trojan_Telegram___xStack_1935_1"
+      - "trojan_Telegram___xStack__li__br__1935_1"
+      - "trojan_Telegram___xStack_1935_2"
+      - "trojan_Telegram___xStack__li__br__1935_2"
+      - "trojan_Telegram___xStack_1935_3"
+      - "trojan_Telegram___xStack__li__br__1935_3"
+      - "trojan_Telegram___xStack_1935_4"
+      - "trojan_Telegram___xStack__li__br__1935_4"
+      - "trojan_Telegram___xStack_1935_5"
+      - "trojan_Telegram___xStack__li__br__1935_5"
+      - "trojan_Telegram___xStack_1935_6"
+      - "trojan_Telegram___xStack__li__br__1935_6"
+      - "trojan_Telegram___xStack_1935_7"
+      - "trojan_Telegram___xStack__li__br__1935_7"
+      - "trojan_Telegram___xStack_1935_8"
+      - "trojan_Telegram___xStack__li__br__1935_8"
+      - "trojan_Telegram___xStack_1935_9"
+      - "trojan_Telegram___xStack__li__br__1935_9"

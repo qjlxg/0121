@@ -65,7 +65,7 @@ jobs:
         git add data/all.txt
         git add data/clash_config.yaml
         git add data/previous_nodes.txt
-        git add data/clash.log
+        
         
         git commit -m "Update tested nodes" || echo "No changes to commit"
         git push

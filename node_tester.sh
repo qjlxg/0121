@@ -21,13 +21,17 @@ TEMP_CLASH_CONFIG="data/clash_config_batch.yaml"
 FINAL_CLASH_CONFIG="data/clash_config.yaml"
 # Clash 运行日志，用于调试启动问题
 CLASH_LOG="data/clash.log"
+# 存储测试通过的节点 JSON 格式
+ALL_PASSED_NODES_JSON="data/passed_nodes.json"
 
 # --- 配置限制 ---
 MAX_NODES_FOR_CLASH_TEST=5000  # 最大测试节点总数
-BATCH_SIZE=800  # 每批测试的节点数量
+BATCH_SIZE=500  # 每批测试的节点数量
 
-# 清理旧的临时文件
-rm -rf data && mkdir -p data
+# 仅清理临时文件，避免删除必要文件
+mkdir -p data
+rm -f data/temp_*.txt data/batch_*.json data/batch_all_*.txt
+touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON" # 确保文件存在
 
 echo "步骤 1: 获取主 sources 列表..."
 curl -s --retry 3 --connect-timeout 10 "$SOURCES_LIST_URL" | grep -v '^#' > "$TEMP_SOURCES_LIST"
@@ -97,7 +101,6 @@ fi
 
 echo "步骤 5: 分批测试节点..."
 BATCH_COUNT=$(( (NODES_TO_TEST_COUNT + BATCH_SIZE - 1) / BATCH_SIZE ))
-ALL_PASSED_NODES_JSON="data/passed_nodes.json"
 echo "[]" > "$ALL_PASSED_NODES_JSON"
 
 for ((i=0; i<BATCH_COUNT; i++)); do
@@ -161,15 +164,20 @@ with open(sys.argv[1], "a") as f:
     CLASH_PID=$!
     sleep 15
     if ! ps -p $CLASH_PID > /dev/null; then
-        echo "错误: Clash 启动失败，查看 $CLASH_LOG。"
+        echo "错误: Clash 启动失败，查看 $CLASH_LOG。继续下一批次。"
         cat "$CLASH_LOG"
-        exit 1
+        # 清理批次临时文件
+        rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
+        continue
     fi
 
     if ! curl -s --connect-timeout 5 "http://127.0.0.1:9090/proxies" > /dev/null; then
-        echo "错误: Clash API (127.0.0.1:9090) 不可用，查看 $CLASH_LOG。"
+        echo "错误: Clash API (127.0.0.1:9090) 不可用，查看 $CLASH_LOG。继续下一批次。"
         cat "$CLASH_LOG"
-        exit 1
+        kill $CLASH_PID 2>/dev/null
+        # 清理批次临时文件
+        rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
+        continue
     fi
 
     BATCH_ALL_NODES_FILE="data/batch_all_$i.txt"
@@ -194,8 +202,28 @@ with open(all_nodes_json, "w", encoding="utf-8") as f:
     json.dump(all_nodes, f, indent=2, ensure_ascii=False)
 ' "$BATCH_ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON" "data/batch_$i.json"
 
+    # 追加通过节点到 data/all.txt
+    python3 -c '
+import sys, json
+with open(sys.argv[1], "r", encoding="utf-8") as f:
+    passed = {line.split(":")[0].strip(): True for line in f if ": timeout" not in line and ": error" not in line}
+with open(sys.argv[2], "r", encoding="utf-8") as f:
+    batch_nodes = json.load(f)
+with open(sys.argv[3], "a", encoding="utf-8") as f:
+    for node in batch_nodes:
+        if node["name"] in passed:
+            f.write(f"{node[\"name\"]}: passed\n")
+' "$BATCH_ALL_NODES_FILE" "data/batch_$i.json" "$ALL_NODES_FILE"
+
+    # 验证文件存在
+    if [ -s "$ALL_PASSED_NODES_JSON" ]; then
+        echo "  批次 $((i+1)) 通过节点已保存到 $ALL_PASSED_NODES_JSON 和 $ALL_NODES_FILE。"
+    else
+        echo "  警告: 批次 $((i+1)) 无通过节点，$ALL_PASSED_NODES_JSON 可能为空。"
+    fi
+
     # 清理批次临时文件
-    rm -f "data/batch_$i.json" "$BATCH_ALL_NODES_FILE"
+    rm -f "data/batch_$i.json" "$BATCH_ALL_NODES_FILE" "$TEMP_CLASH_CONFIG"
 done
 
 echo "步骤 6: 生成最终 Clash 配置文件..."
@@ -246,5 +274,4 @@ with open(sys.argv[1], "a") as f:
         f.write(f"      - \"{name}\"\n")
 ' "$FINAL_CLASH_CONFIG"
 
-echo "步骤 7: 保存测试结果到 $ALL_NODES_FILE 和 $FINAL_CLASH_CONFIG。"
-echo "节点测试完成，$PASSED_NODES_COUNT 个节点保存到 $FINAL_CLASH_CONFIG。"
+echo "节点测试完成，$PASSED_NODES_COUNT 个节点保存到 $FINAL_CLASH_CONFIG 和 $ALL_NODES_FILE。"

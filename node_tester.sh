@@ -14,7 +14,7 @@ CLASH_LOG="data/clash.log"
 ALL_PASSED_NODES_JSON="data/passed_nodes.json"
 
 # --- 配置限制 ---
-MAX_NODES_FOR_CLASH_TEST=5000
+MAX_NODES_FOR_CLASH_TEST=50000
 BATCH_SIZE=500
 
 # 初始化并清理临时文件

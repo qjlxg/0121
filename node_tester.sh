@@ -1,37 +1,26 @@
 #!/bin/bash
 
 # --- 文件路径定义 ---
-# 主 sources.list 文件 URL，包含子来源 URL 列表
 SOURCES_LIST_URL="https://raw.githubusercontent.com/qjlxg/ss/refs/heads/master/sources.list"
-# 存储最终测试通过的节点，用于生成最终 clash_config.yaml
 ALL_NODES_FILE="data/all.txt"
-# 保存上次运行的所有原始节点，用于增量比较
 PREVIOUS_NODES_FILE="data/previous_nodes.txt"
-# 临时存储从 SOURCES_LIST_URL 下载的子来源列表
 TEMP_SOURCES_LIST="data/temp_sources_list.txt"
-# 临时存储从所有子来源合并的原始节点 URL
 TEMP_ALL_RAW_NODES="data/temp_all_raw_nodes.txt"
-# 临时存储新发现的原始节点，待测试
 TEMP_NEW_RAW_NODES="data/temp_new_raw_nodes.txt"
-# 临时存储解析后的节点 JSON 格式
 TEMP_PARSED_NODES_JSON="data/parsed_nodes.json"
-# 每批测试的 Clash 配置文件（分批生成）
 TEMP_CLASH_CONFIG="data/clash_config_batch.yaml"
-# 最终测试通过的 Clash 配置文件
 FINAL_CLASH_CONFIG="data/clash_config.yaml"
-# Clash 运行日志，用于调试启动问题
 CLASH_LOG="data/clash.log"
-# 存储测试通过的节点 JSON 格式
 ALL_PASSED_NODES_JSON="data/passed_nodes.json"
 
 # --- 配置限制 ---
-MAX_NODES_FOR_CLASH_TEST=5000  # 最大测试节点总数
-BATCH_SIZE=500  # 每批测试的节点数量
+MAX_NODES_FOR_CLASH_TEST=5000
+BATCH_SIZE=500
 
-# 仅清理临时文件，避免删除必要文件
+# 仅清理临时文件
 mkdir -p data
 rm -f data/temp_*.txt data/batch_*.json data/batch_all_*.txt
-touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON" # 确保文件存在
+touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON"
 
 echo "步骤 1: 获取主 sources 列表..."
 curl -s --retry 3 --connect-timeout 10 "$SOURCES_LIST_URL" | grep -v '^#' > "$TEMP_SOURCES_LIST"
@@ -141,7 +130,6 @@ with open(output_yaml_file, "a", encoding="utf-8") as f:
     echo "  - name: 'auto-test'" >> "$TEMP_CLASH_CONFIG"
     echo "    type: url-test" >> "$TEMP_CLASH_CONFIG"
     echo "    interval: 300" >> "$TEMP_CLASH_CONFIG"
-    # 动态选择测试 URL
     if jq -e '.[] | select(.type == "trojan" or .type == "vless")' "data/batch_$i.json" > /dev/null; then
         echo "    url: https://www.google.com/generate_204" >> "$TEMP_CLASH_CONFIG"
     else
@@ -168,6 +156,24 @@ with open(sys.argv[1], "a") as f:
         cat "$CLASH_LOG"
         # 清理批次临时文件
         rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
+        # 提交当前成果
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+        git commit -m "Save batch $((i+1)) results despite Clash failure" || echo "无中间结果需要提交"
+        git fetch origin
+        git pull --rebase origin main || {
+            echo "错误: git pull --rebase 失败，查看冲突详情："
+            git status
+            git diff
+            exit 1
+        }
+        git push || {
+            echo "错误: git push 失败，查看远程仓库状态："
+            git status
+            git log --oneline -n 5
+            exit 1
+        }
         continue
     fi
 
@@ -177,6 +183,24 @@ with open(sys.argv[1], "a") as f:
         kill $CLASH_PID 2>/dev/null
         # 清理批次临时文件
         rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
+        # 提交当前成果
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+        git commit -m "Save batch $((i+1)) results despite Clash API failure" || echo "无中间结果需要提交"
+        git fetch origin
+        git pull --rebase origin main || {
+            echo "错误: git pull --rebase 失败，查看冲突详情："
+            git status
+            git diff
+            exit 1
+        }
+        git push || {
+            echo "错误: git push 失败，查看远程仓库状态："
+            git status
+            git log --oneline -n 5
+            exit 1
+        }
         continue
     fi
 
@@ -212,7 +236,7 @@ with open(sys.argv[2], "r", encoding="utf-8") as f:
 with open(sys.argv[3], "a", encoding="utf-8") as f:
     for node in batch_nodes:
         if node["name"] in passed:
-            f.write(f"{node[\"name\"]}: passed\n")
+            f.write(f"{node['name']}: passed\n")
 ' "$BATCH_ALL_NODES_FILE" "data/batch_$i.json" "$ALL_NODES_FILE"
 
     # 验证文件存在
@@ -221,6 +245,25 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
     else
         echo "  警告: 批次 $((i+1)) 无通过节点，$ALL_PASSED_NODES_JSON 可能为空。"
     fi
+
+    # 提交批次结果
+    git config user.name 'github-actions[bot]'
+    git config user.email 'github-actions[bot]@users.noreply.github.com'
+    git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+    git commit -m "Save batch $((i+1)) results" || echo "无中间结果需要提交"
+    git fetch origin
+    git pull --rebase origin main || {
+        echo "错误: git pull --rebase 失败，查看冲突详情："
+        git status
+        git diff
+        exit 1
+    }
+    git push || {
+        echo "错误: git push 失败，查看远程仓库状态："
+        git status
+        git log --oneline -n 5
+        exit 1
+    }
 
     # 清理批次临时文件
     rm -f "data/batch_$i.json" "$BATCH_ALL_NODES_FILE" "$TEMP_CLASH_CONFIG"
@@ -255,7 +298,10 @@ with open(input_json_file, "r", encoding="utf-8") as f:
     proxies_list = json.load(f)
 with open(output_yaml_file, "a", encoding="utf-8") as f:
     yaml.dump(proxies_list, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
-' "$ALL_PASSED_NODES_JSON" "$FINAL_CLASH_CONFIG"
+' "$ALL_PASSED_NODES_JSON" "$FINAL_CLASH_CONFIG" || {
+    echo "错误: 无法生成 proxies 部分，查看 $ALL_PASSED_NODES_JSON 是否有效。"
+    exit 1
+}
 
 echo "proxy-groups:" >> "$FINAL_CLASH_CONFIG"
 echo "  - name: 'auto-test'" >> "$FINAL_CLASH_CONFIG"
@@ -266,12 +312,15 @@ echo "    proxies:" >> "$FINAL_CLASH_CONFIG"
 
 python3 -c '
 import yaml, sys
-with open(sys.argv[1], "r") as f:
+with open(sys.argv[1], "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 proxy_names = [proxy["name"] for proxy in config.get("proxies", []) if isinstance(proxy, dict) and "name" in proxy]
-with open(sys.argv[1], "a") as f:
+with open(sys.argv[1], "a", encoding="utf-8") as f:
     for name in proxy_names:
         f.write(f"      - \"{name}\"\n")
-' "$FINAL_CLASH_CONFIG"
+' "$FINAL_CLASH_CONFIG" || {
+    echo "错误: 无法生成 proxy-groups 部分，查看 $FINAL_CLASH_CONFIG 是否有效。"
+    exit 1
+}
 
 echo "节点测试完成，$PASSED_NODES_COUNT 个节点保存到 $FINAL_CLASH_CONFIG 和 $ALL_NODES_FILE。"

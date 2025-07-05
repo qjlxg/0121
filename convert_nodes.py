@@ -9,7 +9,16 @@ import html
 import logging
 import ipaddress
 
+# 配置日志，仅记录错误到文件，精简 stdout 输出
 logging.basicConfig(filename="data/convert_nodes.log", level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+# 已知的 SS 加密方法
+VALID_SS_CIPHERS = {
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "aes-128-cfb", "aes-192-cfb", "aes-256-cfb",
+    "rc4-md5", "chacha20", "chacha20-ietf",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305"
+}
 
 def is_valid_ip(server):
     """检查服务器 IP 是否为公共 IP，排除私有 IP"""
@@ -81,6 +90,9 @@ def parse_url(url_raw):
                 logging.error(f"SS 认证格式错误: {url_raw}")
                 return None
             method, password = auth_part_decoded.split(':', 1)
+            if method not in VALID_SS_CIPHERS:
+                logging.error(f"SS 无效加密方法: {method} in {url_raw}")
+                return None
             server_port_name = parts[1].split('#')
             if ':' not in server_port_name[0]:
                 logging.error(f"SS 服务器端口格式错误: {url_raw}")
@@ -210,6 +222,9 @@ def parse_url(url_raw):
                 return None
             port = int(parts[1])
             method = parts[3]
+            if method not in VALID_SS_CIPHERS:
+                logging.error(f"SSR 无效加密方法: {method} in {url_raw}")
+                return None
             remaining = parts[5].split("/?")
             password_b64 = remaining[0]
             try:

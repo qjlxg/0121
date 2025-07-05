@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18' # Clash Dashboard 或某些前端工具可能需要Node.js环境
+        node-version: '18'
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -27,19 +27,15 @@ jobs:
         python-version: '3.x'
 
     - name: Download Clash.Meta (Mihomo)
-      # 动态获取最新稳定版 Mihomo 的下载链接
-      # 访问 https://github.com/MetaCubeX/mihomo/releases 获取最新版本信息
       run: |
-        # 确保删除任何可能存在的 'clash' 文件或目录，以避免 "Is a directory" 错误
         rm -rf clash
         
         MIHOMO_VERSION=$(curl -s "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | grep -oP '"tag_name": "\K[^"]+')
         echo "Detected Mihomo version: $MIHOMO_VERSION"
-        # 根据检测到的版本构建下载URL
         MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
         echo "Downloading Mihomo from: $MIHOMO_URL"
         wget -qO- "$MIHOMO_URL" | gzip -d > clash
-        chmod +x clash # 确保下载的clash可执行文件有权限
+        chmod +x clash
 
     - name: Install dependencies
       run: |
@@ -47,15 +43,19 @@ jobs:
         sudo apt-get install -y iputils-ping curl
         pip install pyyaml requests
 
-    - name: Make node_tester.sh executable # 新增步骤：赋予脚本执行权限
-      run: chmod +x ./node_tester.sh
+    # --- 新增步骤：赋予Python脚本执行权限 ---
+    - name: Make scripts executable
+      run: |
+        chmod +x ./node_tester.sh
+        chmod +x ./convert_nodes.py # 新增
+        chmod +x ./test_clash_api.py # 新增
 
     - name: Run Node Tester Script
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 用于推送更新到仓库
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mkdir -p data # 确保data目录存在
-        ./node_tester.sh # 现在应该能正常运行了
+        ./node_tester.sh # 现在它会调用外部的Python文件
     
     - name: Commit and push results
       run: |

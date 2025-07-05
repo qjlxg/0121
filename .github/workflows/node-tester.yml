@@ -1,0 +1,66 @@
+name: Node Tester and Updater
+
+on:
+  workflow_dispatch: # 允许手动触发
+  schedule:
+    - cron: '0 */6 * * *' # 每6小时运行一次，您可以根据需要调整
+  push:
+    branches:
+      - master # 当master分支有新提交时触发
+
+jobs:
+  test_nodes:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18' # Clash Dashboard 可能需要Node.js环境
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Download Clash.Meta (Mihomo)
+      # 获取最新稳定版 Mihomo 的下载链接
+      # 访问 https://github.com/MetaCubeX/mihomo/releases 获取最新版本
+      run: |
+        MIHOMO_VERSION=$(curl -s "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | grep -oP '"tag_name": "\K[^"]+')
+        echo "Detected Mihomo version: $MIHOMO_VERSION"
+        MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
+        echo "Downloading Mihomo from: $MIHOMO_URL"
+        wget -qO- "$MIHOMO_URL" | gzip -d > clash
+        chmod +x clash
+      # 如果上面的动态获取链接失败，您可以手动指定一个版本和链接，例如：
+      # run: |
+      #   MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/v1.18.7/mihomo-linux-amd64-v1.18.7.gz" # 示例版本，请替换为最新稳定版
+      #   wget -qO- "$MIHOMO_URL" | gzip -d > clash
+      #   chmod +x clash
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y iputils-ping curl
+        pip install pyyaml requests
+
+    - name: Run Node Tester Script
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 用于推送更新到仓库
+      run: |
+        mkdir -p data # 确保data目录存在
+        ./node_tester.sh
+    
+    - name: Commit and push results
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/all.txt
+        git commit -m "Update tested nodes" || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

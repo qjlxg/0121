@@ -14,7 +14,7 @@ TEMP_CLASH_CONFIG="data/clash_config.yaml"
 TEMP_PARSED_NODES_JSON="data/parsed_nodes.json"
 
 # --- 配置限制 ---
-MAX_NODES_FOR_CLASH_TEST=5000
+MAX_NODES_FOR_CLASH_TEST=5000000
 
 # 清理旧的临时文件
 rm -rf data && mkdir -p data

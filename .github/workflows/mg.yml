@@ -73,21 +73,31 @@ jobs:
       run: |
         mkdir -p data
         ./node_tester.sh
+        # 提交每批次结果
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
+        git commit -m "Save intermediate batch results" || echo "无中间结果需要提交"
+        git fetch origin
+        git pull --rebase origin main || {
+          echo "错误: git pull --rebase 失败，查看冲突详情："
+          git status
+          git diff
+          exit 1
+        }
+        git push || {
+          echo "错误: git push 失败，查看远程仓库状态："
+          git status
+          git log --oneline -n 5
+          exit 1
+        }
 
-    - name: Commit and push results
+    - name: Commit and push final results
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/all.txt
-        git add data/clash_config.yaml
-        git add data/previous_nodes.txt
-        git add data/clash.log
-        git add data/convert_nodes.log
-        git add data/test_clash_api.log
-        git add data/passed_nodes.json
-        git add data/parsed_nodes.json
+        git add data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json
         git commit -m "Update tested nodes" || echo "无变更需要提交"
-        # 拉取远程变更并尝试合并
         git fetch origin
         git pull --rebase origin main || {
           echo "错误: git pull --rebase 失败，查看冲突详情："

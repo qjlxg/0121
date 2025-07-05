@@ -27,6 +27,8 @@ jobs:
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
+        rm -rf clash/*
+        git rm -r --cached clash/* 2>/dev/null || true
         git add .
         git commit -m "Clean working directory before run" || echo "无变更需要提交"
         git push || {

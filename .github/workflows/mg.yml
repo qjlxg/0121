@@ -22,6 +22,16 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0 # 获取完整历史，方便 rebase
+        lfs: true # 启用 Git LFS
+
+    - name: Check disk space
+      run: |
+        df -h
+        FREE_SPACE=$(df -B1 . | tail -1 | awk '{print $4}')
+        if [ "$FREE_SPACE" -lt 5000000000 ]; then
+          echo "错误: 磁盘空间不足（少于 5GB），退出。"
+          exit 1
+        fi
 
     - name: Clean working directory
       run: |
@@ -79,15 +89,33 @@ jobs:
 
     - name: Make scripts executable
       run: |
+        chmod +x ./prefilter_nodes.sh
         chmod +x ./node_tester.sh
         chmod +x ./convert_nodes.py
         chmod +x ./test_clash_api.py
+
+    - name: Run Prefilter Nodes Script
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        mkdir -p data
+        ./prefilter_nodes.sh
+        # 提交预过滤结果
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add data/filtered_nodes.txt data/prefilter_nodes.log
+        git commit -m "保存预过滤节点结果" || echo "无预过滤结果需要提交"
+        git push || {
+          echo "错误: git push 失败，查看远程仓库状态："
+          git status
+          git log --oneline -n 5
+          exit 1
+        }
 
     - name: Run Node Tester Script
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        mkdir -p data
         ./node_tester.sh
 
     - name: Commit and push final results
@@ -95,8 +123,8 @@ jobs:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         echo "提交文件列表："
-        ls -l data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/clash_config_batch_*.yaml 2>/dev/null || echo "部分文件不存在"
-        git add --ignore-errors data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json
+        ls -l data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log data/clash_config_batch_*.yaml 2>/dev/null || echo "部分文件不存在"
+        git add --ignore-errors data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log
         # 仅添加存在的批次配置文件
         for file in data/clash_config_batch_*.yaml; do
           [ -f "$file" ] && git add "$file"

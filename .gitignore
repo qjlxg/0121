@@ -5,6 +5,7 @@
 !data/convert_nodes.log
 !data/test_clash_api.log
 !data/prefilter_nodes.log
+!data/fetch_nodes.log
 
 # 忽略 Clash 相关文件
 clash/
@@ -17,6 +18,7 @@ data/temp_*
 data/batch_*
 cache.db
 data/temp_check_nodes.txt
+data/temp_sub_nodes.txt
 
 # 允许必要数据文件
 !data/parsed_nodes.json
@@ -26,3 +28,5 @@ data/temp_check_nodes.txt
 !data/previous_nodes.txt
 !data/clash_config_batch_*.yaml
 !data/filtered_nodes.txt
+!data/temp_all_raw_nodes.txt
+!data/failed_sub_urls.txt

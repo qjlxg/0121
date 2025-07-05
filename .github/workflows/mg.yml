@@ -94,16 +94,53 @@ jobs:
         chmod +x ./convert_nodes.py
         chmod +x ./test_clash_api.py
 
-    - name: Run Prefilter Nodes Script
+    - name: Fetch and Prefilter Nodes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mkdir -p data
+        # 步骤 1: 获取主 sources 列表
+        echo "获取主 sources 列表..."
+        SOURCES_LIST_URL="https://raw.githubusercontent.com/qjlxg/ss/refs/heads/master/sources.list"
+        curl -s --retry 3 --connect-timeout 10 "$SOURCES_LIST_URL" | grep -v '^#' > data/temp_sources_list.txt
+        if [ ! -s data/temp_sources_list.txt ]; then
+          echo "错误: 无法获取主 sources 列表或列表为空。退出。"
+          exit 1
+        fi
+
+        # 步骤 2: 从子来源获取节点 URL
+        echo "从子来源获取节点 URL..."
+        SUB_URL_COUNT=0
+        rm -f data/temp_all_raw_nodes.txt
+        touch data/temp_all_raw_nodes.txt
+        while IFS= read -r sub_url; do
+          if [ -z "$sub_url" ]; then
+            continue
+          fi
+          curl -s --retry 3 --connect-timeout 10 "$sub_url" | grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' >> data/temp_all_raw_nodes.txt
+          ((SUB_URL_COUNT++))
+        done < data/temp_sources_list.txt
+        echo "  从 $SUB_URL_COUNT 个子来源获取完成。"
+
+        if [ ! -s data/temp_all_raw_nodes.txt ]; then
+          echo "错误: 从子来源获取的节点 URL 为空。退出。"
+          exit 1
+        fi
+
+        # 步骤 3: 运行预过滤
+        echo "运行预过滤模块..."
         ./prefilter_nodes.sh
+        if [ ! -s data/filtered_nodes.txt ]; then
+          echo "错误: 预过滤后无有效节点，退出。"
+          exit 1
+        fi
+        FILTERED_NODES_COUNT=$(wc -l < data/filtered_nodes.txt)
+        echo "  预过滤后剩余 $FILTERED_NODES_COUNT 个节点。"
+
         # 提交预过滤结果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/filtered_nodes.txt data/prefilter_nodes.log
+        git add data/temp_all_raw_nodes.txt data/filtered_nodes.txt data/prefilter_nodes.log
         git commit -m "保存预过滤节点结果" || echo "无预过滤结果需要提交"
         git push || {
           echo "错误: git push 失败，查看远程仓库状态："

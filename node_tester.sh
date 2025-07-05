@@ -23,7 +23,7 @@ FINAL_CLASH_CONFIG="data/clash_config.yaml"
 CLASH_LOG="data/clash.log"
 
 # --- 配置限制 ---
-MAX_NODES_FOR_CLASH_TEST=1000  # 最大测试节点总数
+MAX_NODES_FOR_CLASH_TEST=100000  # 最大测试节点总数
 BATCH_SIZE=500  # 每批测试的节点数量
 
 # 清理旧的临时文件

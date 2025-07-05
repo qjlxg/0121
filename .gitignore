@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+!data/clash.log
+!data/convert_nodes.log
+!data/test_clash_api.log
 # C extensions
 *.so
 

@@ -17,9 +17,9 @@ ALL_PASSED_NODES_JSON="data/passed_nodes.json"
 MAX_NODES_FOR_CLASH_TEST=5000
 BATCH_SIZE=500
 
-# 清理遗留文件并初始化
+# 初始化并清理临时文件
 mkdir -p data clash
-rm -rf data/temp_*.txt data/batch_*.json data/batch_all_*.txt
+rm -rf data/temp_*.txt data/batch_*.json data/batch_all_*.txt data/clash_config_batch_*.yaml
 touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON"
 
 echo "步骤 1: 获取主 sources 列表..."
@@ -123,7 +123,7 @@ output_yaml_file = sys.argv[2]
 with open(input_json_file, "r", encoding="utf-8") as f:
     proxies_list = json.load(f)
 with open(output_yaml_file, "a", encoding="utf-8") as f:
-    yaml.dump(proxies_list, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+    yaml.dump(proxies_list if proxies_list else [], f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 ' "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
 
     echo "proxy-groups:" >> "$TEMP_CLASH_CONFIG"
@@ -161,7 +161,7 @@ with open(sys.argv[1], "a") as f:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config_batch_*.yaml
-        git commit -m "Save batch $((i+1)) results despite Clash failure" || echo "无中间结果需要提交"
+        git commit -m "保存批次 $((i+1)) 结果（Clash 启动失败）" || echo "无中间结果需要提交"
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
             git status
@@ -182,7 +182,7 @@ with open(sys.argv[1], "a") as f:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config_batch_*.yaml
-        git commit -m "Save batch $((i+1)) results despite Clash API failure" || echo "无中间结果需要提交"
+        git commit -m "保存批次 $((i+1)) 结果（Clash API 失败）" || echo "无中间结果需要提交"
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
             git status
@@ -228,7 +228,7 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
 ' "$BATCH_ALL_NODES_FILE" "data/batch_$i.json" "$ALL_NODES_FILE"
 
     # 验证文件存在并记录通过节点数
-    BATCH_PASSED_COUNT=$(grep -c ": passed" "$BATCH_ALL_NODES_FILE")
+    BATCH_PASSED_COUNT=$(grep -c ": passed" "$BATCH_ALL_NODES_FILE" 2>/dev/null || echo 0)
     echo "  批次 $((i+1)) 测试完成: $BATCH_PASSED_COUNT 个节点通过。"
     if [ -s "$ALL_PASSED_NODES_JSON" ]; then
         echo "  批次 $((i+1)) 通过节点已保存到 $ALL_PASSED_NODES_JSON 和 $ALL_NODES_FILE。"
@@ -240,7 +240,7 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
     git config user.name 'github-actions[bot]'
     git config user.email 'github-actions[bot]@users.noreply.github.com'
     git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config_batch_*.yaml
-    git commit -m "Save batch $((i+1)) results" || echo "无中间结果需要提交"
+    git commit -m "保存批次 $((i+1)) 结果" || echo "无中间结果需要提交"
     git push || {
         echo "错误: git push 失败，查看远程仓库状态："
         git status
@@ -272,6 +272,17 @@ proxy-groups:
     interval: 300
     proxies: []
 EOF
+    # 提交最终结果
+    git config user.name 'github-actions[bot]'
+    git config user.email 'github-actions[bot]@users.noreply.github.com'
+    git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/previous_nodes.txt data/clash_config.yaml data/clash_config_batch_*.yaml
+    git commit -m "保存最终结果（无通过节点）" || echo "无最终结果需要提交"
+    git push || {
+        echo "错误: git push 失败，查看远程仓库状态："
+        git status
+        git log --oneline -n 5
+        exit 1
+    }
     exit 0
 fi
 
@@ -300,6 +311,7 @@ with open(output_yaml_file, "a", encoding="utf-8") as f:
     yaml.dump(proxies_list if proxies_list else [], f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 ' "$ALL_PASSED_NODES_JSON" "$FINAL_CLASH_CONFIG" || {
     echo "错误: 无法生成 proxies 部分，查看 $ALL_PASSED_NODES_JSON 是否有效。"
+    cat "$ALL_PASSED_NODES_JSON"
     exit 1
 }
 

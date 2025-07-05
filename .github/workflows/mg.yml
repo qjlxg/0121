@@ -107,40 +107,55 @@ jobs:
           echo "错误: 无法获取主 sources 列表或列表为空。退出。"
           exit 1
         fi
+        SOURCES_COUNT=$(wc -l < data/temp_sources_list.txt)
+        echo "  获取到 $SOURCES_COUNT 个子来源。"
 
         # 步骤 2: 从子来源获取节点 URL
         echo "从子来源获取节点 URL..."
         SUB_URL_COUNT=0
-        rm -f data/temp_all_raw_nodes.txt
-        touch data/temp_all_raw_nodes.txt
+        SUCCESS_COUNT=0
+        rm -f data/temp_all_raw_nodes.txt data/failed_sub_urls.txt
+        touch data/temp_all_raw_nodes.txt data/failed_sub_urls.txt
         while IFS= read -r sub_url; do
           if [ -z "$sub_url" ]; then
             continue
           fi
-          curl -s --retry 3 --connect-timeout 10 "$sub_url" | grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' >> data/temp_all_raw_nodes.txt
+          echo "  正在拉取子来源: $sub_url" >> data/fetch_nodes.log
+          HTTP_STATUS=$(curl -s --retry 3 --connect-timeout 10 -w "%{http_code}" "$sub_url" -o data/temp_sub_nodes.txt)
+          if [ "$HTTP_STATUS" -eq 200 ] && [ -s data/temp_sub_nodes.txt ]; then
+            grep -E 'hysteria2://|vmess://|trojan://|ss://|ssr://|vless://' data/temp_sub_nodes.txt >> data/temp_all_raw_nodes.txt
+            echo "  $sub_url: 成功 (HTTP $HTTP_STATUS)" >> data/fetch_nodes.log
+            ((SUCCESS_COUNT++))
+          else
+            echo "  $sub_url: 失败 (HTTP $HTTP_STATUS)" >> data/fetch_nodes.log
+            echo "$sub_url" >> data/failed_sub_urls.txt
+          fi
           ((SUB_URL_COUNT++))
         done < data/temp_sources_list.txt
-        echo "  从 $SUB_URL_COUNT 个子来源获取完成。"
+        echo "  从 $SUB_URL_COUNT 个子来源获取完成，成功 $SUCCESS_COUNT 个，失败 $((SUB_URL_COUNT - SUCCESS_COUNT)) 个。" | tee -a data/fetch_nodes.log
+        rm -f data/temp_sub_nodes.txt
 
         if [ ! -s data/temp_all_raw_nodes.txt ]; then
-          echo "错误: 从子来源获取的节点 URL 为空。退出。"
+          echo "错误: 从子来源获取的节点 URL 为空。查看 data/fetch_nodes.log 和 data/failed_sub_urls.txt。退出。" | tee -a data/fetch_nodes.log
           exit 1
         fi
+        RAW_NODES_COUNT=$(wc -l < data/temp_all_raw_nodes.txt)
+        echo "  获取到 $RAW_NODES_COUNT 个原始节点。" | tee -a data/fetch_nodes.log
 
         # 步骤 3: 运行预过滤
         echo "运行预过滤模块..."
         ./prefilter_nodes.sh
         if [ ! -s data/filtered_nodes.txt ]; then
-          echo "错误: 预过滤后无有效节点，退出。"
+          echo "错误: 预过滤后无有效节点，退出。" | tee -a data/prefilter_nodes.log
           exit 1
         fi
         FILTERED_NODES_COUNT=$(wc -l < data/filtered_nodes.txt)
-        echo "  预过滤后剩余 $FILTERED_NODES_COUNT 个节点。"
+        echo "  预过滤后剩余 $FILTERED_NODES_COUNT 个节点。" | tee -a data/prefilter_nodes.log
 
         # 提交预过滤结果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/temp_all_raw_nodes.txt data/filtered_nodes.txt data/prefilter_nodes.log
+        git add data/temp_all_raw_nodes.txt data/filtered_nodes.txt data/prefilter_nodes.log data/fetch_nodes.log data/failed_sub_urls.txt
         git commit -m "保存预过滤节点结果" || echo "无预过滤结果需要提交"
         git push || {
           echo "错误: git push 失败，查看远程仓库状态："
@@ -160,8 +175,8 @@ jobs:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         echo "提交文件列表："
-        ls -l data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log data/clash_config_batch_*.yaml 2>/dev/null || echo "部分文件不存在"
-        git add --ignore-errors data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log
+        ls -l data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log data/fetch_nodes.log data/failed_sub_urls.txt data/clash_config_batch_*.yaml 2>/dev/null || echo "部分文件不存在"
+        git add --ignore-errors data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/prefilter_nodes.log data/fetch_nodes.log data/failed_sub_urls.txt
         # 仅添加存在的批次配置文件
         for file in data/clash_config_batch_*.yaml; do
           [ -f "$file" ] && git add "$file"

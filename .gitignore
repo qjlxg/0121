@@ -1,11 +1,19 @@
-# 忽略所有日志文件
+忽略所有日志文件
+
 *.log
-# 明确允许需要提交的日志文件
-!data/clash.log
-!data/convert_nodes.log
-!data/test_clash_api.log
-# 忽略临时文件
-*.tmp
-*.swp
-# 忽略 Clash 可执行文件
-clash
+
+允许必要日志文件
+
+!data/clash.log !data/convert_nodes.log !data/test_clash_api.log
+
+忽略 Clash 相关文件
+
+clash/ clash/*
+
+忽略临时文件
+
+.tmp .swp data/temp_data/batch_cache.db
+
+允许必要数据文件
+
+!data/parsed_nodes.json !data/passed_nodes.json !data/all.txt !data/clash_config.yaml !data/previous_nodes.txt

@@ -76,6 +76,7 @@ def parse_url(url_raw):
             parsed_url = urllib.parse.urlparse(url)
             password = parsed_url.username
             server = parsed_url.hostname
+            if not server or not password: return None
             port = parsed_url.port if parsed_url.port else 443
             name_raw = urllib.parse.unquote(parsed_url.fragment) if parsed_url.fragment else f"{server}:{port}"
             name = f"trojan_{re.sub(r'[^a-zA-Z0-9_.-]', '_', name_raw)}_{port}"
@@ -89,7 +90,7 @@ def parse_url(url_raw):
                 "tls": True,
                 "sni": query_params.get("sni", [server])[0],
                 "alpn": query_params.get("alpn", ["h2", "http/1.1"])[0].split(","),
-                "skip-cert-verify": True,
+                "skip-cert-verify": query_params.get("skip-cert-verify", ["true"])[0].lower() == "true",
                 "udp": True
             }
         elif url.startswith("vless://"):
@@ -188,7 +189,8 @@ def parse_url(url_raw):
             return None
         else:
             return None
-    except Exception:
+    except Exception as e:
+        print(f"解析错误: {url_raw} - {str(e)}", file=sys.stderr)
         return None
 
 used_names = set()
@@ -203,7 +205,7 @@ def get_unique_name(base_name):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        sys.stderr.write("Usage: python convert_nodes.py <input_nodes_file> <output_json_file>\n")
+        sys.stderr.write("用法: python convert_nodes.py <input_nodes_file> <output_json_file>\n")
         sys.exit(1)
     input_nodes_file = sys.argv[1]
     output_json_file = sys.argv[2]

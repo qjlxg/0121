@@ -42,10 +42,18 @@ jobs:
         wget -qO- "$MIHOMO_URL" | gzip -d > clash
         chmod +x clash
         # 验证 Clash 可执行文件
-        if ! ./clash --version > /dev/null; then
+        if ! ./clash -v > /dev/null; then
           echo "错误: Clash 可执行文件无效"
+          ./clash -v || true # 显示版本错误详情
           exit 1
         fi
+      env:
+        pythonLocation: /opt/hostedtoolcache/Python/3.13.5/x64
+        PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib/pkgconfig
+        Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+        Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+        Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.5/x64
+        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.5/x64/lib
 
     - name: Install dependencies
       run: |

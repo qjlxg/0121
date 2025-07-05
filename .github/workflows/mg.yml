@@ -23,6 +23,19 @@ jobs:
       with:
         fetch-depth: 0 # 获取完整历史，方便 rebase
 
+    - name: Clean working directory
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "Clean working directory before run" || echo "无变更需要提交"
+        git push || {
+          echo "错误: git push 失败，查看远程仓库状态："
+          git status
+          git log --oneline -n 5
+          exit 1
+        }
+
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
@@ -36,15 +49,16 @@ jobs:
     - name: Download Clash.Meta (Mihomo)
       run: |
         rm -rf clash
+        mkdir -p clash
         MIHOMO_VERSION=$(curl -s "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | grep -oP '"tag_name": "\K[^"]+')
         echo "使用 Mihomo 版本: $MIHOMO_VERSION"
         MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
-        wget -qO- "$MIHOMO_URL" | gzip -d > clash
-        chmod +x clash
+        wget -qO- "$MIHOMO_URL" | gzip -d > clash/clash
+        chmod +x clash/clash
         # 验证 Clash 可执行文件
-        if ! ./clash -v > /dev/null; then
+        if ! ./clash/clash -v > /dev/null; then
           echo "错误: Clash 可执行文件无效"
-          ./clash -v || true # 显示版本错误详情
+          ./clash/clash -v || true # 显示版本错误详情
           exit 1
         fi
       env:
@@ -73,24 +87,6 @@ jobs:
       run: |
         mkdir -p data
         ./node_tester.sh
-        # 提交每批次结果
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
-        git commit -m "Save intermediate batch results" || echo "无中间结果需要提交"
-        git fetch origin
-        git pull --rebase origin main || {
-          echo "错误: git pull --rebase 失败，查看冲突详情："
-          git status
-          git diff
-          exit 1
-        }
-        git push || {
-          echo "错误: git push 失败，查看远程仓库状态："
-          git status
-          git log --oneline -n 5
-          exit 1
-        }
 
     - name: Commit and push final results
       run: |
@@ -98,13 +94,6 @@ jobs:
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json
         git commit -m "Update tested nodes" || echo "无变更需要提交"
-        git fetch origin
-        git pull --rebase origin main || {
-          echo "错误: git pull --rebase 失败，查看冲突详情："
-          git status
-          git diff
-          exit 1
-        }
         git push || {
           echo "错误: git push 失败，查看远程仓库状态："
           git status

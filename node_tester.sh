@@ -83,8 +83,9 @@ secret: "" # 可选的Clash外部控制器密码
 proxies:
 EOF
 
-# --- 调用外部 Python 脚本来转换节点 ---
-./convert_nodes.py "$TEMP_SIMPLE_TEST_PASS" "$TEMP_CLASH_CONFIG"
+# --- 调用外部 Python 脚本来转换节点，并捕获其输出 ---
+CONVERT_RESULT=$(./convert_nodes.py "$TEMP_SIMPLE_TEST_PASS" "$TEMP_CLASH_CONFIG")
+echo "$CONVERT_RESULT" # 打印 Python 脚本的汇总信息
 
 # 添加一个 proxy-group 用于同时测试所有节点
 echo "proxy-groups:" >> "$TEMP_CLASH_CONFIG"

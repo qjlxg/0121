@@ -147,6 +147,9 @@ with open(sys.argv[1], "a") as f:
         f.write(f"      - \"{name}\"\n")
 ' "$TEMP_CLASH_CONFIG"
 
+    # 保存批次配置文件供调试
+    cp "$TEMP_CLASH_CONFIG" "data/clash_config_batch_$i.yaml"
+
     echo "  运行 Clash 测试批次 $((i+1))..."
     ./clash/clash -f "$TEMP_CLASH_CONFIG" -d . > "$CLASH_LOG" 2>&1 &
     CLASH_PID=$!
@@ -154,7 +157,6 @@ with open(sys.argv[1], "a") as f:
     if ! ps -p $CLASH_PID > /dev/null; then
         echo "错误: Clash 启动失败，查看 $CLASH_LOG。继续下一批次。"
         cat "$CLASH_LOG"
-        cp "$TEMP_CLASH_CONFIG" "data/clash_config_batch_$i.yaml" # 保存批次配置文件供调试
         # 清理批次临时文件
         rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
         # 提交当前成果
@@ -174,7 +176,6 @@ with open(sys.argv[1], "a") as f:
     if ! curl -s --connect-timeout 5 "http://127.0.0.1:9090/proxies" > /dev/null; then
         echo "错误: Clash API (127.0.0.1:9090) 不可用，查看 $CLASH_LOG。继续下一批次。"
         cat "$CLASH_LOG"
-        cp "$TEMP_CLASH_CONFIG" "data/clash_config_batch_$i.yaml" # 保存批次配置文件供调试
         kill $CLASH_PID 2>/dev/null
         # 清理批次临时文件
         rm -f "data/batch_$i.json" "$TEMP_CLASH_CONFIG"
@@ -217,19 +218,32 @@ with open(all_nodes_json, "w", encoding="utf-8") as f:
     # 追加通过节点到 data/all.txt
     python3 -c '
 import sys, json
-with open(sys.argv[1], "r", encoding="utf-8") as f:
-    passed = {line.split(":")[0].strip(): True for line in f if ": timeout" not in line and ": error" not in line}
-with open(sys.argv[2], "r", encoding="utf-8") as f:
-    batch_nodes = json.load(f)
-with open(sys.argv[3], "a", encoding="utf-8") as f:
-    for node in batch_nodes:
-        if node["name"] in passed:
-            f.write(f"{node['name']}: passed\n")
-' "$BATCH_ALL_NODES_FILE" "data/batch_$i.json" "$ALL_NODES_FILE"
+passed_nodes_file = sys.argv[1]
+batch_json = sys.argv[2]
+all_nodes_file = sys.argv[3]
+try:
+    with open(passed_nodes_file, "r", encoding="utf-8") as f:
+        passed = {line.split(":")[0].strip(): True for line in f if ": timeout" not in line and ": error" not in line}
+    with open(batch_json, "r", encoding="utf-8") as f:
+        batch_nodes = json.load(f)
+    with open(all_nodes_file, "a", encoding="utf-8") as f:
+        for node in batch_nodes:
+            if node["name"] in passed:
+                f.write(f"{node['name']}: passed\n")
+except Exception as e:
+    print(f"错误: 追加到 {all_nodes_file} 失败: {e}")
+' "$BATCH_ALL_NODES_FILE" "data/batch_$i.json" "$ALL_NODES_FILE" || {
+        echo "警告: 追加通过节点到 $ALL_NODES_FILE 失败，查看脚本输出。"
+    }
 
     # 验证文件存在并记录通过节点数
     BATCH_PASSED_COUNT=$(grep -c ": passed" "$BATCH_ALL_NODES_FILE" 2>/dev/null || echo 0)
     echo "  批次 $((i+1)) 测试完成: $BATCH_PASSED_COUNT 个节点通过。"
+    if [ "$BATCH_PASSED_COUNT" -eq 0 ]; then
+        echo "  警告: 批次 $((i+1)) 无通过节点，检查 $BATCH_ALL_NODES_FILE 和 $CLASH_LOG。"
+        grep ": timeout" "$BATCH_ALL_NODES_FILE" | head -n 5
+        grep ": error" "$BATCH_ALL_NODES_FILE" | head -n 5
+    fi
     if [ -s "$ALL_PASSED_NODES_JSON" ]; then
         echo "  批次 $((i+1)) 通过节点已保存到 $ALL_PASSED_NODES_JSON 和 $ALL_NODES_FILE。"
     else

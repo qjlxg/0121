@@ -1,1 +1,11 @@
-
+# 忽略所有日志文件
+*.log
+# 明确允许需要提交的日志文件
+!data/clash.log
+!data/convert_nodes.log
+!data/test_clash_api.log
+# 忽略临时文件
+*.tmp
+*.swp
+# 忽略 Clash 可执行文件
+clash

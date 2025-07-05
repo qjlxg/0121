@@ -1,19 +1,28 @@
-忽略所有日志文件
-
+# 忽略所有日志文件
 *.log
+# 允许必要日志文件
+!data/clash.log
+!data/convert_nodes.log
+!data/test_clash_api.log
+!data/prefilter_nodes.log
 
-允许必要日志文件
+# 忽略 Clash 相关文件
+clash/
+clash/*
 
-!data/clash.log !data/convert_nodes.log !data/test_clash_api.log
+# 忽略临时文件
+*.tmp
+*.swp
+data/temp_*
+data/batch_*
+cache.db
+data/temp_check_nodes.txt
 
-忽略 Clash 相关文件
-
-clash/ clash/*
-
-忽略临时文件
-
-.tmp .swp data/temp_data/batch_cache.db
-
-允许必要数据文件
-
-!data/parsed_nodes.json !data/passed_nodes.json !data/all.txt !data/clash_config.yaml !data/previous_nodes.txt
+# 允许必要数据文件
+!data/parsed_nodes.json
+!data/passed_nodes.json
+!data/all.txt
+!data/clash_config.yaml
+!data/previous_nodes.txt
+!data/clash_config_batch_*.yaml
+!data/filtered_nodes.txt

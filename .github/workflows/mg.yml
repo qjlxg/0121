@@ -30,7 +30,7 @@ jobs:
         rm -rf clash/*
         git rm -r --cached clash/* 2>/dev/null || true
         git add .
-        git commit -m "Clean working directory before run" || echo "无变更需要提交"
+        git commit -m "清理工作目录" || echo "无变更需要提交"
         git push || {
           echo "错误: git push 失败，查看远程仓库状态："
           git status
@@ -94,8 +94,10 @@ jobs:
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json
-        git commit -m "Update tested nodes" || echo "无变更需要提交"
+        echo "提交文件列表："
+        ls -l data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/clash_config_batch_*.yaml 2>/dev/null || true
+        git add --ignore-errors data/all.txt data/clash_config.yaml data/previous_nodes.txt data/clash.log data/convert_nodes.log data/test_clash_api.log data/passed_nodes.json data/parsed_nodes.json data/clash_config_batch_*.yaml
+        git commit -m "更新测试节点结果" || echo "无变更需要提交"
         git push || {
           echo "错误: git push 失败，查看远程仓库状态："
           git status

@@ -99,25 +99,16 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mkdir -p data
-        # 步骤 1: 获取主 sources 列表
-        echo "获取主 sources 列表..."
-        SOURCES_LIST_URL="https://raw.githubusercontent.com/qjlxg/ss/refs/heads/master/sources.list"
+        # 步骤 1: 读取本地 sources 列表
+        echo "读取本地 sources 列表..." | tee -a data/fetch_nodes.log
         BACKUP_SOURCES_LIST="data/backup_sources.list"
-        curl -s --retry 3 --connect-timeout 15 "$SOURCES_LIST_URL" -o data/temp_sources_list.txt 2>> data/fetch_nodes.log
-        if [ ! -s data/temp_sources_list.txt ]; then
-          echo "警告: 无法获取主 sources 列表，尝试使用备份 $BACKUP_SOURCES_LIST..." | tee -a data/fetch_nodes.log
-          if [ -f "$BACKUP_SOURCES_LIST" ] && [ -s "$BACKUP_SOURCES_LIST" ]; then
-            cp "$BACKUP_SOURCES_LIST" data/temp_sources_list.txt
-          else
-            echo "错误: 主 sources 列表和备份均不可用。退出。" | tee -a data/fetch_nodes.log
-            exit 1
-          fi
+        if [ ! -f "$BACKUP_SOURCES_LIST" ] || [ ! -s "$BACKUP_SOURCES_LIST" ]; then
+          echo "错误: 本地 $BACKUP_SOURCES_LIST 不存在或为空。退出。" | tee -a data/fetch_nodes.log
+          exit 1
         fi
-        SOURCES_COUNT=$(wc -l < data/temp_sources_list.txt)
+        cp "$BACKUP_SOURCES_LIST" data/temp_sources_list.txt
+        SOURCES_COUNT=$(grep -v '^#' data/temp_sources_list.txt | wc -l)
         echo "  获取到 $SOURCES_COUNT 个子来源。" | tee -a data/fetch_nodes.log
-
-        # 保存备份
-        cp data/temp_sources_list.txt "$BACKUP_SOURCES_LIST"
 
         # 步骤 2: 从子来源获取节点 URL
         echo "从子来源获取节点 URL..." | tee -a data/fetch_nodes.log
@@ -127,7 +118,7 @@ jobs:
         rm -f data/temp_all_raw_nodes.txt data/failed_sub_urls.txt
         touch data/temp_all_raw_nodes.txt data/failed_sub_urls.txt
         while IFS= read -r sub_url; do
-          if [ -z "$sub_url" ]; then
+          if [ -z "$sub_url" ] || [[ "$sub_url" =~ ^# ]]; then
             continue
           fi
           echo "  正在拉取子来源: $sub_url" >> data/fetch_nodes.log
@@ -147,7 +138,7 @@ jobs:
         echo "  从 $SUB_URL_COUNT 个子来源获取完成，成功 $SUCCESS_COUNT 个，失败 $((SUB_URL_COUNT - SUCCESS_COUNT)) 个，总计 $NODE_COUNT 个节点。" | tee -a data/fetch_nodes.log
         rm -f data/temp_sub_nodes.txt
 
-        # 提交拉取结果（即使部分失败）
+        # 提交拉取结果
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/temp_all_raw_nodes.txt data/fetch_nodes.log data/failed_sub_urls.txt data/backup_sources.list

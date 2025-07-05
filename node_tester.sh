@@ -17,9 +17,9 @@ ALL_PASSED_NODES_JSON="data/passed_nodes.json"
 MAX_NODES_FOR_CLASH_TEST=5000
 BATCH_SIZE=500
 
-# 仅清理临时文件
+# 清理遗留文件并初始化
 mkdir -p data
-rm -f data/temp_*.txt data/batch_*.json data/batch_all_*.txt
+rm -rf clash/* data/temp_*.txt data/batch_*.json data/batch_all_*.txt
 touch "$ALL_NODES_FILE" "$ALL_PASSED_NODES_JSON"
 
 echo "步骤 1: 获取主 sources 列表..."
@@ -161,13 +161,6 @@ with open(sys.argv[1], "a") as f:
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
         git commit -m "Save batch $((i+1)) results despite Clash failure" || echo "无中间结果需要提交"
-        git fetch origin
-        git pull --rebase origin main || {
-            echo "错误: git pull --rebase 失败，查看冲突详情："
-            git status
-            git diff
-            exit 1
-        }
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
             git status
@@ -188,13 +181,6 @@ with open(sys.argv[1], "a") as f:
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
         git commit -m "Save batch $((i+1)) results despite Clash API failure" || echo "无中间结果需要提交"
-        git fetch origin
-        git pull --rebase origin main || {
-            echo "错误: git pull --rebase 失败，查看冲突详情："
-            git status
-            git diff
-            exit 1
-        }
         git push || {
             echo "错误: git push 失败，查看远程仓库状态："
             git status
@@ -251,13 +237,6 @@ with open(sys.argv[3], "a", encoding="utf-8") as f:
     git config user.email 'github-actions[bot]@users.noreply.github.com'
     git add data/parsed_nodes.json data/passed_nodes.json data/all.txt data/clash.log data/convert_nodes.log data/test_clash_api.log
     git commit -m "Save batch $((i+1)) results" || echo "无中间结果需要提交"
-    git fetch origin
-    git pull --rebase origin main || {
-        echo "错误: git pull --rebase 失败，查看冲突详情："
-        git status
-        git diff
-        exit 1
-    }
     git push || {
         echo "错误: git push 失败，查看远程仓库状态："
         git status
